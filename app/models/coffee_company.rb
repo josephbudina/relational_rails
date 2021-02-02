@@ -4,5 +4,5 @@ class CoffeeCompany < ApplicationRecord
                         :zipcode,
                         :is_local
 
-  #has_many :coffee_roasts
+  has_many :coffee_roast
 end

@@ -9,10 +9,6 @@ require 'rails_helper'
    end
 
    describe 'relationships' do
-     it {should have_many :coffee_roasts}
+     it {should have_many :coffee_roast}
    end
-
-   # coffee_roasts it should belong to coffee company
-   #model - belongs to
-   
  end
