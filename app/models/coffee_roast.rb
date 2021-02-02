@@ -3,7 +3,7 @@ class CoffeeRoast < ApplicationRecord
                         :coffee_company_id,
                         :origin,
                         :elevation,
-                        :is_fresh
+                        :fresh
 
-    belongs_to :coffee_company
+    belongs_to :coffee_company, class_name: "CoffeeCompany"
 end

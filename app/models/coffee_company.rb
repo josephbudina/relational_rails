@@ -2,7 +2,7 @@ class CoffeeCompany < ApplicationRecord
   validates_presence_of :name,
                         :address,
                         :zipcode,
-                        :is_local
+                        :local
 
   has_many :coffee_roast
 end

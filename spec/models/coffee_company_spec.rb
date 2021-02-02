@@ -5,7 +5,7 @@ require 'rails_helper'
      it {should validate_presence_of :name}
      it {should validate_presence_of :address}
      it {should validate_presence_of :zipcode}
-     it {should validate_presence_of :is_local}
+     it {should validate_presence_of :local}
    end
 
    describe 'relationships' do

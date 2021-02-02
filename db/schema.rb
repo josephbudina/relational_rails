@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_02_160417) do
+ActiveRecord::Schema.define(version: 2021_02_02_174602) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -19,7 +19,7 @@ ActiveRecord::Schema.define(version: 2021_02_02_160417) do
     t.string "name"
     t.string "address"
     t.integer "zipcode"
-    t.boolean "is_local"
+    t.boolean "local"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -29,7 +29,7 @@ ActiveRecord::Schema.define(version: 2021_02_02_160417) do
     t.string "name"
     t.string "origin"
     t.integer "elevation"
-    t.boolean "is_fresh"
+    t.boolean "fresh"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["coffee_company_id"], name: "index_coffee_roasts_on_coffee_company_id"
