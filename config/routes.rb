@@ -5,4 +5,5 @@ Rails.application.routes.draw do
   get '/coffee_company', to: 'coffee_company#index'
   get '/ice_cream_parlor', to: 'ice_cream_parlor#new'
   get '/coffee_company', to: 'coffee_company#index'
+  get '/companies', to: 'coffee_company#companies'
 end
