@@ -1,6 +1,6 @@
 class IceCreamParlorController < ApplicationController
   def index
-    @flavors = ['Vanilla', 'Chocolate']
+    @flavors = IceCreamParlor.all
   end
 
   def new
