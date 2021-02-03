@@ -26,6 +26,7 @@ class CoffeeCompanyController < ApplicationController
 
   def update
     company = CoffeeCompany.find(params[:id])
+    binding.pry
     company.update({
       name: params[:company][:name],
       address: params[:company][:address],

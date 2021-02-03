@@ -2,9 +2,14 @@
   <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
   <input type="hidden" name="_method" value="PATCH" />
   <h2>Edit</h2>
+  <p>Name:</p>
   <input type='text' name='company[name]' value="<%= @company.name %>"/><br/>
+  <p>Address:</p>
   <textarea name='company[address]'><%= @company.address %></textarea><br/>
+  <p>Zipcode:</p>
   <input type='text' name='company[zipcode]' value="<%= @company.zipcode %>"/><br/>
-  <input type='text' name='company[local]' value="<%= @company.local %>"/><br/>
+  <%= f.select :@company.local, {"Yes" => true, "No" => false}%>
+  <p>Local: <input type= "checkbox" name='company[local]' value= <%= check_box_tag 'true', '1', @company.local%></p>
+
   <input type='submit'/>
 </form>
