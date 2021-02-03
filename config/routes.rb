@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   get '/coffee_company', to: 'coffee_company#index'
   get '/ice_cream_parlor/new', to: 'ice_cream_parlor#new'
   post '/ice_cream_parlor', to: 'ice_cream_parlor#create'
+  get '/ice_cream_parlor/:id', to: 'ice_cream_parlor#show'
   get '/coffee_company/new', to: 'coffee_company#new'
   get '/coffee_company/:id', to: 'coffee_company#show'
   get '/coffee_company/:id/edit', to: 'coffee_company#edit'
