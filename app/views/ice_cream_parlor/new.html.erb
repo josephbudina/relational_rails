@@ -1,9 +1,11 @@
 <form action="/ice_cream_parlor" method="post">
   <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-  <p>Add new flavor:</p>
-  <p>Flavor Name:</p>
-  <input type='text' name='ice_cream_parlor[flavor]'/><br/>
-  <p>Amount:</p>
-  <textarea name='ice_cream_parlor[inventory]'></textarea><br/>
+  <h3>Add New Parlor:</h3>
+  <p>Name:</p>
+  <input type='text' name='ice_cream_parlor[name]'>
+  <p>Employee Count:</p>
+  <input type='text' name='ice_cream_parlor[employees]'>
+  <p>Open?:</p>
+  <input type='text' name='ice_cream_parlor[open]'>
   <input type='submit'/>
 </form>

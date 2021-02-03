@@ -12,9 +12,11 @@ class IceCreamParlorController < ApplicationController
       open: params[:ice_cream_parlor][:open],
       employees: params[:ice_cream_parlor][:employees]
     })
-
     parlor.save
-
     redirect_to '/ice_cream_parlor'
+  end
+
+  def show
+    @parlors = IceCreamParlor.find(params[:id])
   end
 end
