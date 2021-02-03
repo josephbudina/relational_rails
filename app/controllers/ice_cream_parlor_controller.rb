@@ -10,7 +10,7 @@ class IceCreamParlorController < ApplicationController
     parlor = IceCreamParlor.new({
       name: params[:ice_cream_parlor][:name],
       open: params[:ice_cream_parlor][:open],
-      employees: params[:ice_cream_parlor][:employees]
+      street_number: params[:ice_cream_parlor][:street_number]
     })
     
     parlor.save
