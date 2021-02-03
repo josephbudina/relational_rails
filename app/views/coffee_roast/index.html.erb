@@ -1,0 +1,11 @@
+<h1>Coffee Roasts</h1>
+
+<% @roasts.each do |roast| %>
+  <h3><a href="/coffee_roast/<%= roast.id %>"><%= roast.name %></a></h3>
+<% end %>
+
+<% if @roasts.empty? %>
+<h3> No Coffee Roasts!</h3>
+<% end %>
+
+<a href="/coffee_roast/new">New Coffee Roast</a>

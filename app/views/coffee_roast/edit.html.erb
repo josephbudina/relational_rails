@@ -1,0 +1,16 @@
+<form action="/coffee_roast/<%= @roast.id %>" method="post">
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+  <input type="hidden" name="_method" value="PATCH" />
+  <h2>Edit</h2>
+  <p>Name:</p>
+  <input type='text' name='roast[name]' value="<%= @roast.name %>"/><br/>
+  <p>Origin:</p>
+  <textarea name='roast[origin]'><%= @roast.origin %></textarea><br/>
+  <p>Elevation:</p>
+  <input type='text' name='roast[elevation]' value="<%= @roast.elevation %>"/><br/>
+  <p>
+    <input type="checkbox" name="fresh" value="<%= @roast.fresh %>" />
+    <label for="fresh">Fresh?</label>
+  </p>
+  <input type='submit'/>
+</form>

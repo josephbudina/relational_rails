@@ -3,4 +3,8 @@
 <% @companies.each do |company| %>
   <h3><a href="/coffee_company/<%= company.id %>"><%= company.name %></a></h3>
 <% end %>
+
+<% if @companies.empty? %>
+<h3> No Coffee Commpanies!</h3>
+<% end %>
 <a href="/coffee_company/new">New Coffee Company</a>

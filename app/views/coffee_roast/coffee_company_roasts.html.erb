@@ -1,0 +1,7 @@
+<% @company.coffee_roast.each do |roast| %>
+  <h3><a href="/coffee_roast/<%= roast.id %>"><%= roast.name %></a></h3>
+<% end %>
+
+<% if @company.coffee_roast.empty? %>
+<h3> No Coffee Roasts!</h3>
+<% end %>

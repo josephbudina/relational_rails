@@ -1,5 +1,6 @@
 <a href="/coffee_company">Coffee Company Index</a>
 <h1><%= @company.name %></h1>
+<a href="/coffee_company/<%= @company.id %>/coffee_roast">View Roasts</a>
 <p>Address: <%= @company.address%> <%= @company.zipcode %></p>
 <p>Local? <%= check_box_tag 'yes', '1', @company.local, :disabled => true %></p>
 
