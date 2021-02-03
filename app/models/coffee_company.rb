@@ -3,6 +3,8 @@ class CoffeeCompany < ApplicationRecord
                         :address,
                         :zipcode,
                         :local
+  validates_uniqueness_of :name
 
   has_many :coffee_roast
+
 end
