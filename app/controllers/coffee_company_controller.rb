@@ -25,6 +25,10 @@ class CoffeeCompanyController < ApplicationController
   end
 
   def update
+    binding.pry
+    if params[:company][:local].nil?
+      params[:company][:local] = false
+    end
     company = CoffeeCompany.find(params[:id])
     binding.pry
     company.update({

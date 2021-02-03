@@ -8,8 +8,9 @@
   <textarea name='company[address]'><%= @company.address %></textarea><br/>
   <p>Zipcode:</p>
   <input type='text' name='company[zipcode]' value="<%= @company.zipcode %>"/><br/>
-  <%= f.select :@company.local, {"Yes" => true, "No" => false}%>
-  <p>Local: <input type= "checkbox" name='company[local]' value= <%= check_box_tag 'true', '1', @company.local%></p>
-
+  <p>
+    <input type="checkbox" name="local" value="<%= @company.local %>" />
+    <label for="local">Local?</label>
+  </p>
   <input type='submit'/>
 </form>
