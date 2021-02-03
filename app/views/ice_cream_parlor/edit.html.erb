@@ -1,0 +1,9 @@
+<form action="/ice_cream_parlor/<%= @parlors.id %>" method="post">
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+  <input type="hidden" name="_method" value="PATCH" />
+  <p>Edit</p>
+  <input type='text' name='ice_cream_parlor[name]' value="<%= @parlors.name %>"/><br/>
+  <input name='ice_cream_parlor[street_number]'><%= @parlors.street_number %></textarea><br/>
+  <input name='ice_cream_parlor[open]'><%= @parlors.open %></textarea><br/>
+  <input type='submit'/>
+</form>
