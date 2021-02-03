@@ -1,5 +1,7 @@
-<h1>All flavors<h1>
+<h1>All Parlors<h1>
 
-<%= @flavors.each do |flavor| %>
-  <h3><%= flavor %></h3>
+<%= @parlors.each do |parlor| %>
+  <h3><a href="/tasks/<%= parlor.id %>"><%= parlor.name %></h3>
+  <h3><%= parlor.open %></h3>
+  <h3><%= parlor.employees %></h3>
 <% end %>
