@@ -11,18 +11,23 @@ class CoffeeRoastController < ApplicationController
     @company = CoffeeCompany.find(params[:id])
   end
 
+  def new
+    @company = CoffeeCompany.find(params[:id])
+  end
+
   def create
     if params[:roast][:fresh].nil?
       params[:roast][:fresh] = false
     end
-    roast = CoffeeRoast.create({
+
+    roast = CoffeeRoast.create!({
       name: params[:roast][:name],
-      coffee_company_id: params[:company],
+      coffee_company_id: params[:id],
       origin: params[:roast][:origin],
       elevation: params[:roast][:elevation],
       fresh: params[:roast][:fresh],
       })
-    redirect_to "/coffee_roast"
+    redirect_to "/coffee_company/#{params[:id]}/coffee_roast"
   end
 
   def edit
@@ -37,7 +42,6 @@ class CoffeeRoastController < ApplicationController
 
     roast.update({
       name: params[:roast][:name],
-      coffee_company_id: params[:company],
       origin: params[:roast][:origin],
       elevation: params[:roast][:elevation],
       fresh: params[:roast][:fresh]

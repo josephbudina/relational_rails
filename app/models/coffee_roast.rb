@@ -4,5 +4,6 @@ class CoffeeRoast < ApplicationRecord
                         :origin,
                         :elevation
 
+    validates_uniqueness_of :name
     belongs_to :coffee_company, class_name: "CoffeeCompany"
 end

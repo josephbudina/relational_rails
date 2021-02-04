@@ -1,14 +1,8 @@
-<form action="/coffee_roast" method="post">
+<form action="/coffee_company/<%= @company.id %>/coffee_roast" method="post">
   <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
   <h3>Add New Roast:</h3>
   <p>Name:</p>
   <input type='text' name='roast[name]'>
-  <p>Company:</p>
-  <select name="company" id="company">
-  <% CoffeeCompany.all.each do |company| %>
-  <option value="<%= company.id %>"><%= company.name %></option>
-  <% end %>
-</select>
   <p>Origin:</p>
   <input type='text' name='roast[origin]'>
   <p>Elevation:</p>
