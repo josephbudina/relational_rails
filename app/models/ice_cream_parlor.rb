@@ -1,9 +1,7 @@
 class IceCreamParlor < ApplicationRecord
-  validates_presence_of   :id,
-                          :name,
+  validates_presence_of   :name,
                           :open,
-                          :employees
-  validates_uniqueness_of :id,
-                          :name
+                          :street_number
+  validates_uniqueness_of :name
   has_many  :flavors
 end
