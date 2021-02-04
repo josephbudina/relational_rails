@@ -3,7 +3,7 @@
   <input type="hidden" name="_method" value="PATCH" />
   <p>Edit</p>
   <input type='text' name='ice_cream_parlor[name]' value="<%= @parlors.name %>"/><br/>
-  <input name='ice_cream_parlor[street_number]'><%= @parlors.street_number %></textarea><br/>
-  <input name='ice_cream_parlor[open]'><%= @parlors.open %></textarea><br/>
+  <input name='ice_cream_parlor[open]' value="<%= @parlors.open %>"/><br/>
+  <input type='text' name='ice_cream_parlor[street_number]' value="<%= @parlors.street_number %>"/><br/>
   <input type='submit'/>
 </form>

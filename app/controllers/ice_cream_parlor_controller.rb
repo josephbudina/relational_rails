@@ -32,5 +32,8 @@ class IceCreamParlorController < ApplicationController
       open: params[:ice_cream_parlor][:open],
       street_number: params[:ice_cream_parlor][:street_number]
     })
+
+    parlor.save
+    redirect_to "/ice_cream_parlor/#{parlor.id}"
   end
 end
