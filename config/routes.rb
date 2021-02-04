@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   get '/ice_cream_parlor/:id/edit', to: 'ice_cream_parlor#edit'
   get '/ice_cream_parlor/:id', to: 'ice_cream_parlor#show'
   patch '/ice_cream_parlor/:id', to: 'ice_cream_parlor#update'
+  delete '/ice_cream_parlor/:id', to: 'ice_cream_parlor#destroy'
   get '/coffee_company/new', to: 'coffee_company#new'
   get '/coffee_company/:id', to: 'coffee_company#show'
   get '/coffee_company/:id/edit', to: 'coffee_company#edit'

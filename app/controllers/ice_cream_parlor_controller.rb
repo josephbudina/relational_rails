@@ -36,4 +36,9 @@ class IceCreamParlorController < ApplicationController
     parlor.save
     redirect_to "/ice_cream_parlor/#{parlor.id}"
   end
+
+  def destroy
+    IceCreamParlor.destroy(params[:id])
+    redirect_to '/ice_cream_parlor'
+  end
 end
