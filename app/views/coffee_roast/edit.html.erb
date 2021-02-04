@@ -4,12 +4,6 @@
   <h2>Edit</h2>
   <p>Name:</p>
   <input type='text' name='roast[name]' value="<%= @roast.name %>"/><br/>
-  <p>Company:</p>
-  <select name="company" id="company">
-  <% CoffeeCompany.all.each do |company| %>
-  <option value="<%= company.id %>"><%= company.name %></option>
-  <% end %>
-  </select>
   <p>Origin:</p>
   <textarea name='roast[origin]'><%= @roast.origin %></textarea><br/>
   <p>Elevation:</p>

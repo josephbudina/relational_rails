@@ -27,7 +27,7 @@ class CoffeeRoastController < ApplicationController
       elevation: params[:roast][:elevation],
       fresh: params[:roast][:fresh],
       })
-    redirect_to "/coffee_company/#{params[:id]}/coffee_roast"
+    redirect_to "/coffee_companies/#{params[:id]}/coffee_roast"
   end
 
   def edit
@@ -53,6 +53,6 @@ class CoffeeRoastController < ApplicationController
 
   def destroy
     CoffeeRoast.destroy(params[:id])
-    redirect_to "/coffee_company"
+    redirect_to "/coffee_companies"
   end
 end

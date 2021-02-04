@@ -1,4 +1,4 @@
-class CoffeeCompanyController < ApplicationController
+class CoffeeCompaniesController < ApplicationController
   def index
     @companies = CoffeeCompany.all
   end
@@ -20,7 +20,7 @@ class CoffeeCompanyController < ApplicationController
       zipcode: params[:company][:zipcode],
       local: params[:company][:local],
       })
-    redirect_to "/coffee_company"
+    redirect_to "/coffee_companies"
   end
 
   def edit
@@ -41,7 +41,7 @@ class CoffeeCompanyController < ApplicationController
       })
     company.save
 
-    redirect_to "/coffee_company/#{company.id}"
+    redirect_to "/coffee_companies/#{company.id}"
   end
 
   def destroy
@@ -51,6 +51,6 @@ class CoffeeCompanyController < ApplicationController
     end
 
     CoffeeCompany.destroy(params[:id])
-    redirect_to "/coffee_company"
+    redirect_to "/coffee_companies"
   end
 end
