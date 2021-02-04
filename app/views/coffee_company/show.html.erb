@@ -5,8 +5,10 @@
 <p>Local? <%= check_box_tag 'yes', '1', @company.local, :disabled => true %></p>
 
 <a href="/coffee_company/<%= @company.id %>/edit">Edit</a>
+<p>
 <form action="/coffee_company/<%= @company.id %>" method="POST">
   <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
   <input type="hidden" name="_method" value="DELETE">
-  <input type="submit" value="delete"/>
+  <input type="submit" value="Delete"/>
 </form>
+</p>

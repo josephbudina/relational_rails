@@ -11,7 +11,10 @@ class CoffeeCompanyController < ApplicationController
   end
 
   def create
-    CoffeeCompany.create({
+    if params[:company][:local].nil?
+      params[:company][:local] = false
+    end
+    company = CoffeeCompany.create({
       name: params[:company][:name],
       address: params[:company][:address],
       zipcode: params[:company][:zipcode],
@@ -25,23 +28,28 @@ class CoffeeCompanyController < ApplicationController
   end
 
   def update
-    binding.pry
     if params[:company][:local].nil?
       params[:company][:local] = false
     end
     company = CoffeeCompany.find(params[:id])
-    binding.pry
+
     company.update({
       name: params[:company][:name],
       address: params[:company][:address],
       zipcode: params[:company][:zipcode],
-      local: params[:company][:local],
+      local: params[:company][:local]
       })
     company.save
+
     redirect_to "/coffee_company/#{company.id}"
   end
 
   def destroy
+    company = CoffeeCompany.find(params[:id])
+    company.coffee_roast.each do |roast|
+      roast.destroy
+    end
+
     CoffeeCompany.destroy(params[:id])
     redirect_to "/coffee_company"
   end

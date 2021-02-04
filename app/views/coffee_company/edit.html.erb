@@ -9,8 +9,8 @@
   <p>Zipcode:</p>
   <input type='text' name='company[zipcode]' value="<%= @company.zipcode %>"/><br/>
   <p>
-    <input type="checkbox" name="local" value="<%= @company.local %>" />
     <label for="local">Local?</label>
+    <input type='checkbox' name='company[local]' <%= @company.local ? 'checked' : '' %>/><br/>
   </p>
   <input type='submit'/>
 </form>
