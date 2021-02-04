@@ -1,0 +1,10 @@
+<h1>Coffee Roasts</h1>
+<% @company.coffee_roast.each do |roast| %>
+  <h3><a href="/coffee_roasts/<%= roast.id %>"><%= roast.name %></a></h3>
+<% end %>
+
+<% if @company.coffee_roast.empty? %>
+<h3> No Coffee Roasts!</h3>
+<% end %>
+
+<a href="/coffee_companies/<%= @company.id %>/coffee_roasts/new">New Coffee Roast</a>

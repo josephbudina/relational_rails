@@ -1,4 +1,4 @@
-class CoffeeRoastController < ApplicationController
+class CoffeeRoastsController < ApplicationController
   def index
     @roasts = CoffeeRoast.all
   end
@@ -27,7 +27,7 @@ class CoffeeRoastController < ApplicationController
       elevation: params[:roast][:elevation],
       fresh: params[:roast][:fresh],
       })
-    redirect_to "/coffee_companies/#{params[:id]}/coffee_roast"
+    redirect_to "/coffee_companies/#{params[:id]}/coffee_roasts"
   end
 
   def edit
@@ -48,11 +48,11 @@ class CoffeeRoastController < ApplicationController
       })
     roast.save
 
-    redirect_to "/coffee_roast/#{roast.id}"
+    redirect_to "/coffee_roasts/#{roast.id}"
   end
 
   def destroy
     CoffeeRoast.destroy(params[:id])
-    redirect_to "/coffee_companies"
+    redirect_to "/coffee_roasts"
   end
 end
