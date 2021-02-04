@@ -3,11 +3,18 @@
   <h3>Add New Roast:</h3>
   <p>Name:</p>
   <input type='text' name='roast[name]'>
+  <p>Company:</p>
+  <select name="company" id="company">
+  <% CoffeeCompany.all.each do |company| %>
+  <option value="<%= company.id %>"><%= company.name %></option>
+  <% end %>
+</select>
   <p>Origin:</p>
   <input type='text' name='roast[origin]'>
   <p>Elevation:</p>
   <input type='text' name='roast[elevation]'>
-  <p>Fresh?:</p>
+  <p>Fresh?:
   <input type='checkbox' name='roast[fresh]'/><br/>
   <input type='submit'/>
+  </p>
 </form>
