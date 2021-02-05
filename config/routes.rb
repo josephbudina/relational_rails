@@ -25,5 +25,5 @@ Rails.application.routes.draw do
   patch '/coffee_roasts/:id', to: 'coffee_roasts#update'
   post '/coffee_companies/:id/coffee_roasts', to: 'coffee_roasts#create'
   delete 'coffee_roasts/:id', to: 'coffee_roasts#destroy'
-
+  get '/flavor', to: 'flavor#index'
 end
