@@ -5,6 +5,7 @@ class CoffeeCompaniesController < ApplicationController
 
   def show
     @company = CoffeeCompany.find(params[:id])
+    @roast_count = @company.coffee_roast.count_of_roasts
   end
 
   def new

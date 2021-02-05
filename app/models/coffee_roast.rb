@@ -6,4 +6,8 @@ class CoffeeRoast < ApplicationRecord
 
     validates_uniqueness_of :name
     belongs_to :coffee_company, class_name: "CoffeeCompany"
+
+    def self.count_of_roasts
+      count
+    end
 end
