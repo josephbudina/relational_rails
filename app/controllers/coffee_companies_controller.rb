@@ -1,6 +1,6 @@
 class CoffeeCompaniesController < ApplicationController
   def index
-    @companies = CoffeeCompany.all
+    @companies = CoffeeCompany.all.order_by_created_date
   end
 
   def show

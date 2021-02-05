@@ -6,4 +6,7 @@ class CoffeeCompany < ApplicationRecord
 
   has_many :coffee_roast
 
+  def self.order_by_created_date
+    order('created_at desc')
+  end
 end
