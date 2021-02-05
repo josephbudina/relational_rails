@@ -2,8 +2,8 @@ class CoffeeRoast < ApplicationRecord
   validates_presence_of :name,
                         :coffee_company_id,
                         :origin,
-                        :elevation,
-                        :fresh
+                        :elevation
 
+    validates_uniqueness_of :name
     belongs_to :coffee_company, class_name: "CoffeeCompany"
 end

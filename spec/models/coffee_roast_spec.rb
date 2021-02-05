@@ -6,7 +6,8 @@ require 'rails_helper'
      it {should validate_presence_of :coffee_company_id}
      it {should validate_presence_of :origin}
      it {should validate_presence_of :elevation}
-     it {should validate_presence_of :fresh}
+
+     it {should validate_uniqueness_of :name}
    end
 
    describe 'relationships' do

@@ -1,10 +1,16 @@
-<form action="/coffee_company/<%= @company.id %>" method="post">
+<form action="/coffee_companies/<%= @company.id %>" method="post">
   <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
   <input type="hidden" name="_method" value="PATCH" />
   <h2>Edit</h2>
+  <p>Name:</p>
   <input type='text' name='company[name]' value="<%= @company.name %>"/><br/>
+  <p>Address:</p>
   <textarea name='company[address]'><%= @company.address %></textarea><br/>
+  <p>Zipcode:</p>
   <input type='text' name='company[zipcode]' value="<%= @company.zipcode %>"/><br/>
-  <input type='text' name='company[local]' value="<%= @company.local %>"/><br/>
-  <input type='submit'/>
+  <p>
+    <label for="local">Local?</label>
+    <input type='checkbox' name='company[local]' <%= @company.local ? 'checked' : '' %>/><br/>
+  </p>
+  <input type='submit' value="Update Company"/>
 </form>

@@ -1,0 +1,14 @@
+<a href="/coffee_roasts">Coffee Roast Index</a>
+<h1><%= @roast.name %></h1>
+<p>Origin: <%= @roast.origin%></p>
+<p>Elevation: <%= @roast.elevation%></p>
+<p>Fresh? <%= check_box_tag 'yes', '1', @roast.fresh, :disabled => true %></p>
+
+<a href="/coffee_roasts/<%= @roast.id %>/edit">Update Roast</a>
+<p>
+<form action="/coffee_roasts/<%= @roast.id %>" method="POST">
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+  <input type="hidden" name="_method" value="DELETE">
+  <input type="submit" value="Delete Roast"/>
+</form>
+</p>

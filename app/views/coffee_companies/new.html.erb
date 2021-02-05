@@ -1,4 +1,4 @@
-<form action="/coffee_company" method="post">
+<form action="/coffee_companies" method="post">
   <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
   <h3>Add New Company:</h3>
   <p>Name:</p>
@@ -7,7 +7,7 @@
   <input type='text' name='company[address]'>
   <p>Zipcode:</p>
   <input type='text' name='company[zipcode]'>
-  <p>Local?:</p>
-  <input type='text' name='company[local]'>
-  <input type='submit'/>
+  <p>Local?:
+  <input type='checkbox' name='company[local]'/><br/></p>
+  <input type='submit' value="Create Company"/>
 </form>
