@@ -6,7 +6,11 @@ class CoffeeCompanyRoastsController < ApplicationController
       @roasts = company.filter_by_elevation(elevation_number)
     else
       @roasts = CoffeeCompany.find(params[:id]).coffee_roast
+      if !params[:alphabetical].nil?
+        @roasts = CoffeeCompany.find(params[:id]).order_alphabetically
+      end
     end
+
   end
 
   def show

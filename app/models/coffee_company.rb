@@ -13,4 +13,8 @@ class CoffeeCompany < ApplicationRecord
   def filter_by_elevation(elevation)
     coffee_roast.where("elevation > ?", elevation)
   end
+
+  def order_alphabetically
+    coffee_roast.order('name')
+  end
 end
