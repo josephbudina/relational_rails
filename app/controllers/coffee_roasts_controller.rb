@@ -7,35 +7,6 @@ class CoffeeRoastsController < ApplicationController
     @roast = CoffeeRoast.find(params[:id])
   end
 
-  def coffee_company_roasts
-    if !params[:elevation_number].nil?
-      elevation_number = params[:elevation_number]
-      company = CoffeeCompany.find(params[:id])
-      @roasts = company.filter_by_elevation(elevation_number)
-    else
-      @roasts = CoffeeCompany.find(params[:id]).coffee_roast
-    end
-  end
-
-  def new
-    @company = CoffeeCompany.find(params[:id])
-  end
-
-  def create
-    if params[:roast][:fresh].nil?
-      params[:roast][:fresh] = false
-    end
-
-    roast = CoffeeRoast.create!({
-      name: params[:roast][:name],
-      coffee_company_id: params[:id],
-      origin: params[:roast][:origin],
-      elevation: params[:roast][:elevation],
-      fresh: params[:roast][:fresh],
-      })
-    redirect_to "/coffee_companies/#{params[:id]}/coffee_roasts"
-  end
-
   def edit
     @roast = CoffeeRoast.find(params[:id])
   end
