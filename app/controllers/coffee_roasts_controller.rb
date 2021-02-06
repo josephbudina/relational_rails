@@ -1,6 +1,6 @@
 class CoffeeRoastsController < ApplicationController
   def index
-    @roasts = CoffeeRoast.all.is_fresh?
+    @roasts = CoffeeRoast.all.fresh?
   end
 
   def show

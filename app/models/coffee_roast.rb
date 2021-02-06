@@ -11,7 +11,7 @@ class CoffeeRoast < ApplicationRecord
     count
   end
 
-  def self.is_fresh?
+  def self.fresh?
     CoffeeRoast.where(fresh: true)
   end
 end

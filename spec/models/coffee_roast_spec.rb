@@ -38,7 +38,7 @@ RSpec.describe CoffeeRoast, type: :model do
       end
     end
 
-    describe "::is_fresh?" do
+    describe "::fresh?" do
       it 'only shows records where the fresh column is `true`' do
         CoffeeCompany.destroy_all
         CoffeeRoast.destroy_all
@@ -59,7 +59,7 @@ RSpec.describe CoffeeRoast, type: :model do
               fresh: false,
               created_at: 10.seconds.ago)
 
-        expect(CoffeeRoast.is_fresh?.to_a).to eq([roast1])
+        expect(CoffeeRoast.fresh?.to_a).to eq([roast1])
       end
     end
   end
