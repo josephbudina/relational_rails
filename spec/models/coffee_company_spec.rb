@@ -30,4 +30,29 @@ RSpec.describe CoffeeCompany, type: :model do
       end
     end
   end
+
+
+  describe "instance methods" do
+    describe "::filter_by_elevation" do
+      it 'filters roasts that are greater than elevation input' do
+        CoffeeCompany.destroy_all
+        comp1 = CoffeeCompany.create!(name: 'RMC',
+                                      address: '123 Prince st',
+                                      zipcode: 72034,
+                                      created_at: 1.seconds.ago)
+      roast1 = CoffeeRoast.create!(name: 'Pinnacle',
+                                  coffee_company: comp1,
+                                  origin: 'test',
+                                  elevation: 1000,
+                                  created_at: 1.seconds.ago)
+      roast2 = CoffeeRoast.create!(name: 'Southern Weather',
+                                  coffee_company: comp1,
+                                  origin: 'test 2',
+                                  elevation: 2000,
+                                  created_at: 10.seconds.ago)
+
+        expect(comp1.filter_by_elevation(1500)).to eq([roast2])
+      end
+    end
+  end
 end

@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   get '/', to: 'welcome#index'
-  
+
   get '/ice_cream_parlor', to: 'ice_cream_parlor#index'
   get '/coffee_companies', to: 'coffee_companies#index'
   get '/ice_cream_parlor/new', to: 'ice_cream_parlor#new'
@@ -25,5 +25,7 @@ Rails.application.routes.draw do
   patch '/coffee_roasts/:id', to: 'coffee_roasts#update'
   post '/coffee_companies/:id/coffee_roasts', to: 'coffee_roasts#create'
   delete 'coffee_roasts/:id', to: 'coffee_roasts#destroy'
+
+  get '/coffee_companies/:id/coffee_roasts_filtered', to: 'coffee_roasts#coffee_company_roasts'
 
 end

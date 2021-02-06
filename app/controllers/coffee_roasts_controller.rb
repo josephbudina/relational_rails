@@ -8,7 +8,13 @@ class CoffeeRoastsController < ApplicationController
   end
 
   def coffee_company_roasts
-    @company = CoffeeCompany.find(params[:id])
+    if !params[:elevation_number].nil?
+      elevation_number = params[:elevation_number]
+      company = CoffeeCompany.find(params[:id])
+      @roasts = company.filter_by_elevation(elevation_number)
+    else
+      @roasts = CoffeeCompany.find(params[:id]).coffee_roast
+    end
   end
 
   def new
