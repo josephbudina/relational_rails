@@ -26,4 +26,11 @@ Rails.application.routes.draw do
   post '/coffee_companies/:id/coffee_roasts', to: 'coffee_roasts#create'
   delete 'coffee_roasts/:id', to: 'coffee_roasts#destroy'
   get '/flavor', to: 'flavor#index'
+  get '/ice_cream_parlor/:id/flavor', to: 'flavor#ice_cream_parlor_flavors'
+  get 'ice_cream_parlor/:id/flavor/new', to: 'flavor#new'
+  post 'ice_cream_parlor/:id/flavor', to: 'flavor#create'
+  get '/flavor/:id/edit', to: 'flavor#edit'
+  get '/flavor/:id', to: 'flavor#show'
+  patch '/flavor/:id', to: 'flavor#update'
+  delete '/flavor/:id', to: 'flavor#destroy'
 end
