@@ -2,8 +2,9 @@ require 'rails_helper'
 
 RSpec.describe CoffeeCompany, type: :model do
   before :each do
-    CoffeeCompany.destroy_all
     CoffeeRoast.destroy_all
+    CoffeeCompany.destroy_all
+
     @comp1 = CoffeeCompany.create!(name: 'RMC',
                                   address: '123 Prince st',
                                   zipcode: 72034,
@@ -12,13 +13,11 @@ RSpec.describe CoffeeCompany, type: :model do
                                   address: '123 W st',
                                   zipcode: 721414,
                                   created_at: 10.seconds.ago)
-    @roast1 = CoffeeRoast.create!(name: 'Southern Weather',
-                                coffee_company: @comp1,
+    @roast1 = @comp1.coffee_roast.create!(name: 'Southern Weather',
                                 origin: 'test',
                                 elevation: 1000,
                                 created_at: 1.seconds.ago)
-    @roast2 = CoffeeRoast.create!(name: 'Pinnacle',
-                                coffee_company: @comp1,
+    @roast2 = @comp1.coffee_roast.create!(name: 'Pinnacle',
                                 origin: 'test 2',
                                 elevation: 2000,
                                 created_at: 10.seconds.ago)
@@ -43,7 +42,6 @@ RSpec.describe CoffeeCompany, type: :model do
       end
     end
   end
-
 
   describe "instance methods" do
     describe "::filter_by_elevation" do
