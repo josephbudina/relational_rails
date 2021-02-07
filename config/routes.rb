@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   get '/', to: 'welcome#index'
-  
+
   get '/ice_cream_parlor', to: 'ice_cream_parlor#index'
   get '/coffee_companies', to: 'coffee_companies#index'
   get '/ice_cream_parlor/new', to: 'ice_cream_parlor#new'
@@ -18,12 +18,14 @@ Rails.application.routes.draw do
   delete 'coffee_companies/:id', to: 'coffee_companies#destroy'
 
   get '/coffee_roasts', to: 'coffee_roasts#index'
-  get '/coffee_companies/:id/coffee_roasts', to: 'coffee_roasts#coffee_company_roasts'
-  get '/coffee_companies/:id/coffee_roasts/new', to: 'coffee_roasts#new'
+  get '/coffee_companies/:id/coffee_roasts', to: 'coffee_company_roasts#index'
+  get '/coffee_companies/:id/coffee_roasts/new', to: 'coffee_company_roasts#new'
   get '/coffee_roasts/:id', to: 'coffee_roasts#show'
   get '/coffee_roasts/:id/edit', to: 'coffee_roasts#edit'
   patch '/coffee_roasts/:id', to: 'coffee_roasts#update'
-  post '/coffee_companies/:id/coffee_roasts', to: 'coffee_roasts#create'
+  post '/coffee_companies/:id/coffee_roasts', to: 'coffee_company_roasts#create'
   delete 'coffee_roasts/:id', to: 'coffee_roasts#destroy'
+
+  get '/coffee_companies/:id/coffee_roasts_filtered', to: 'coffee_company_roasts#index'
 
 end

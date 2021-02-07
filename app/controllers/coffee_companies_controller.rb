@@ -1,10 +1,11 @@
 class CoffeeCompaniesController < ApplicationController
   def index
-    @companies = CoffeeCompany.all
+    @companies = CoffeeCompany.all.order_by_created_date
   end
 
   def show
     @company = CoffeeCompany.find(params[:id])
+    @roast_count = @company.coffee_roast.count_of_roasts
   end
 
   def new

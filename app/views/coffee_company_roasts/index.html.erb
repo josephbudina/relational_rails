@@ -1,0 +1,21 @@
+<h1>Coffee Roasts</h1>
+<form action="/coffee_companies/<%= @roasts.first.coffee_company.id %>/coffee_roasts" method="get">
+  <input type="hidden" name="_method" value="GET" />
+  <input type= 'text' name='elevation_number'/>
+  <input type='submit' value="Only return records with more than #num in elevation"/>
+  </form></br>
+  <form action="/coffee_companies/<%= @roasts.first.coffee_company.id %>/coffee_roasts" method="get">
+    <input type="hidden" name="_method" value="GET" />
+    <input type= 'hidden' name='alphabetical' value = "true"/>
+    <input type='submit' value="Sort Alphabetically"/>
+  </form>
+
+<% @roasts.each do |roast| %>
+  <h3><a href="/coffee_roasts/<%= roast.id %>"><%= roast.name %></a></h3>
+<% end %>
+
+<% if @roasts.empty? %>
+<h3> No Coffee Roasts!</h3>
+<% end %>
+
+<a href="/coffee_companies/<%= @roasts.first.coffee_company.id %>/coffee_roasts/new">New Coffee Roast</a>
