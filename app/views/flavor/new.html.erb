@@ -1,0 +1,12 @@
+<form action="/ice_cream_parlor/<%= @parlors.id %>/flavor" method="post">
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+  <h3>Add New Flavor:</h3>
+  <p>Flavor Name:</p>
+  <input type='text' name='flavor[name]'>
+  <p>Flavor rating:</p>
+  <input type='text' name='flavor[flavor_rating]'>
+  <p>In Stock?:
+  <input type='checkbox' name='flavor[in_stock]'/><br/>
+  </p>
+  <input type='submit' value="Create flavor"/>
+</form>
