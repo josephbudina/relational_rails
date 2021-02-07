@@ -1,7 +1,14 @@
 <a href="/ice_cream_parlor">Parlor Index</a>
-
 <h1><%= @parlors.name %></h1>
-<p><%= @parlors.open %></p>
-<p><%= @parlors.street_number %></p>
+<a href="/ice_cream_parlor/<%= @parlors.id %>/flavor">Flavor Index</a>
+<p>Street Number: <%= @parlors.street_number%></p>
+<p>Open? <%= check_box_tag 'yes', '1', @parlors.open, :disabled => true %></p>
 
-<a href="/ice_cream_parlor/<%= @parlors.id %>/edit">Edit</a>
+<a href="/ice_cream_parlor/<%= @parlors.id %>/edit">Update Parlors</a>
+<p>
+<form action="/ice_cream_parlor/<%= @parlors.id %>" method="POST">
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+  <input type="hidden" name="_method" value="DELETE">
+  <input type="submit" value="Delete Parlor"/>
+</form>
+</p>
