@@ -1,6 +1,6 @@
 class IceCreamParlorController < ApplicationController
   def index
-    @parlors = IceCreamParlor.all
+    @parlors = IceCreamParlor.all.order_by_created_date
   end
 
   def new
