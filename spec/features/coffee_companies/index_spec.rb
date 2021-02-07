@@ -12,10 +12,18 @@ RSpec.describe 'The coffee company index page', type: :feature do
                                      local: false)
 
     visit '/coffee_companies'
-
+    expect(page).to have_content('Coffee Companies')
     expect(page).to have_content(company_1.name)
     expect(page).to have_content(company_2.name)
 
     expect(page).to have_link('New Coffee Company')
   end
+
+  it "can see no coffee companies if there are none" do
+    visit '/coffee_companies'
+    expect(page).to have_content('Coffee Companies')
+    expect(page).to have_content('No Coffee Companies!')
+    expect(page).to have_link('New Coffee Company')
+  end
+
 end
