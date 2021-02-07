@@ -5,12 +5,12 @@ class CoffeeCompanyRoastsController < ApplicationController
       company = CoffeeCompany.find(params[:id])
       @roasts = company.filter_by_elevation(elevation_number)
     else
-      @roasts = CoffeeCompany.find(params[:id]).coffee_roast
       if !params[:alphabetical].nil?
         @roasts = CoffeeCompany.find(params[:id]).order_alphabetically
+      else
+        @roasts = CoffeeCompany.find(params[:id]).coffee_roast
       end
     end
-
   end
 
   def show
