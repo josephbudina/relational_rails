@@ -4,8 +4,7 @@
 <%= link_to "View Roasts", "/coffee_companies/#{@company.id}/coffee_roasts" %>
 <p>Address: <%= @company.address%> <%= @company.zipcode %></p>
 <p>Local? <%= check_box_tag 'yes', '1', @company.local, :disabled => true %></p>
-
-<a href="/coffee_companies/<%= @company.id %>/edit">Update Company</a>
+<%= link_to "Update Coffee Company", "/coffee_companies/#{@company.id}/edit" %>
 <p>
 <form action="/coffee_companies/<%= @company.id %>" method="POST">
   <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">

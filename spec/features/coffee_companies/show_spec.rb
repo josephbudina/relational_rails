@@ -4,6 +4,7 @@ RSpec.describe 'The coffee company show page', type: :feature do
   describe "as a visitor" do
     describe "when I visit /coffee_companies/:id" do
       it "I can see the coffee company and its attributes" do
+        CoffeeCompany.destroy_all
         company_1 = CoffeeCompany.create(name:"Round Mountain Coffee",
                                         address: "123 Prince St",
                                         zipcode: 72034,
@@ -25,6 +26,7 @@ RSpec.describe 'The coffee company show page', type: :feature do
       end
 
       it "can see no coffee companies if there are none" do
+        CoffeeCompany.destroy_all
         visit '/coffee_companies'
         expect(page).to have_content('Coffee Companies')
         expect(page).to have_content('No Coffee Companies!')

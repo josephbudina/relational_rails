@@ -4,6 +4,7 @@ RSpec.describe 'Coffee company index page', type: :feature do
   describe "as a visitor" do
     describe "when I visit /coffee_companies" do
       it "I can see each coffee company" do
+        CoffeeCompany.destroy_all
         company_1 = CoffeeCompany.create(name:"Round Mountain Coffee",
                                         address: "123 Prince St",
                                         zipcode: 72034,
@@ -20,10 +21,12 @@ RSpec.describe 'Coffee company index page', type: :feature do
       end
 
       it "can see no coffee companies if there are none" do
+        CoffeeCompany.destroy_all
         visit '/coffee_companies'
         expect(page).to have_content('Coffee Companies')
         expect(page).to have_content('No Coffee Companies!')
       end
+
       it "has a link for a new coffee company" do
         visit '/coffee_companies'
         expect(page).to have_link("New Coffee Company")
