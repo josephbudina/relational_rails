@@ -1,9 +1,10 @@
 <h1>Coffee Companies</h1>
 <% @companies.each do |company| %>
-  <h3><a href="/coffee_companies/<%= company.id %>"><%= company.name %></a> Created At: <%= company.created_at %></h3>
+<h3><%= link_to "#{company.name}", "/coffee_companies/#{company.id}" %>
+ Created At: <%= company.created_at %></h3>
 <% end %>
 
 <% if @companies.empty? %>
 <h3> No Coffee Companies!</h3>
 <% end %>
-<a href="/coffee_companies/new">New Coffee Company</a>
+<%= link_to 'New Coffee Company', '/coffee_companies/new' %>
