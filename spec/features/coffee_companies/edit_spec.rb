@@ -5,12 +5,12 @@ RSpec.describe 'The coffee company update page', type: :feature do
     describe "When I visit the coffee company show page" do
       describe "I see a link to 'Update Coffee Company'" do
         describe "When I click this link" do
-          CoffeeCompany.destroy_all
-          company_1 = CoffeeCompany.create(name:"Round Mountain Coffee",
-                                          address: "123 Prince St",
-                                          zipcode: 72034,
-                                          local: true)
           it "I am taken to a new coffee_companies/:id/edit where I can edit the company's attributes" do
+            CoffeeCompany.destroy_all
+            company_1 = CoffeeCompany.create(name:"Round Mountain Coffee",
+                                            address: "123 Prince St",
+                                            zipcode: 72034,
+                                            local: true)
             visit "/coffee_companies/#{company_1.id}"
 
             click_link("Update Coffee Company")
