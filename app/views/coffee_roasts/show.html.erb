@@ -3,12 +3,7 @@
 <p>Origin: <%= @roast.origin%></p>
 <p>Elevation: <%= @roast.elevation%></p>
 <p>Fresh? <%= check_box_tag 'yes', '1', @roast.fresh, :disabled => true %></p>
-
-<a href="/coffee_roasts/<%= @roast.id %>/edit">Update Roast</a>
+<%= link_to "Update Coffee Roast", "/coffee_roasts/#{@roast.id}/edit" %>
 <p>
-<form action="/coffee_roasts/<%= @roast.id %>" method="POST">
-  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-  <input type="hidden" name="_method" value="DELETE">
-  <input type="submit" value="Delete Roast"/>
-</form>
+<%= button_to 'Delete Coffee Roast', "/coffee_roasts/#{@roast.id}", method: :delete %>
 </p>
