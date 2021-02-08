@@ -12,15 +12,7 @@ class CoffeeCompaniesController < ApplicationController
   end
 
   def create
-    if params[:company][:local].nil?
-      params[:company][:local] = false
-    end
-    company = CoffeeCompany.create({
-      name: params[:company][:name],
-      address: params[:company][:address],
-      zipcode: params[:company][:zipcode],
-      local: params[:company][:local],
-      })
+    company = CoffeeCompany.create(new_params)
     redirect_to "/coffee_companies"
   end
 
@@ -29,17 +21,8 @@ class CoffeeCompaniesController < ApplicationController
   end
 
   def update
-    if params[:company][:local].nil?
-      params[:company][:local] = false
-    end
     company = CoffeeCompany.find(params[:id])
-
-    company.update({
-      name: params[:company][:name],
-      address: params[:company][:address],
-      zipcode: params[:company][:zipcode],
-      local: params[:company][:local]
-      })
+    company.update(company_params)
     company.save
 
     redirect_to "/coffee_companies/#{company.id}"
@@ -53,5 +36,15 @@ class CoffeeCompaniesController < ApplicationController
 
     CoffeeCompany.destroy(params[:id])
     redirect_to "/coffee_companies"
+  end
+
+  private
+
+  def new_params
+    params.permit(:name, :address, :zipcode, :local)
+  end
+
+  def company_params
+    params[:coffee_company].permit(:name, :address, :zipcode, :local)
   end
 end

@@ -12,17 +12,9 @@ class CoffeeRoastsController < ApplicationController
   end
 
   def update
-    if params[:roast][:fresh].nil?
-      params[:roast][:fresh] = false
-    end
     roast = CoffeeRoast.find(params[:id])
 
-    roast.update({
-      name: params[:roast][:name],
-      origin: params[:roast][:origin],
-      elevation: params[:roast][:elevation],
-      fresh: params[:roast][:fresh]
-      })
+    roast.update(coffee_roast_params)
     roast.save
 
     redirect_to "/coffee_roasts/#{roast.id}"
@@ -31,5 +23,11 @@ class CoffeeRoastsController < ApplicationController
   def destroy
     CoffeeRoast.destroy(params[:id])
     redirect_to "/coffee_roasts"
+  end
+
+  private
+
+  def coffee_roast_params
+    params.permit(:name, :origin, :elevation, :fresh)
   end
 end

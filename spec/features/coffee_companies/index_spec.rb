@@ -25,5 +25,4 @@ RSpec.describe 'The coffee company index page', type: :feature do
     expect(page).to have_content('No Coffee Companies!')
     expect(page).to have_link('New Coffee Company')
   end
-
 end

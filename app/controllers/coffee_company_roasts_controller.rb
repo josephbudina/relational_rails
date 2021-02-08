@@ -23,17 +23,13 @@ class CoffeeCompanyRoastsController < ApplicationController
   end
 
   def create
-    if params[:roast][:fresh].nil?
-      params[:roast][:fresh] = false
-    end
-
-    roast = CoffeeRoast.create!({
-      name: params[:roast][:name],
-      coffee_company_id: params[:id],
-      origin: params[:roast][:origin],
-      elevation: params[:roast][:elevation],
-      fresh: params[:roast][:fresh],
-      })
+    CoffeeRoast.create!(coffee_roast_params)
     redirect_to "/coffee_companies/#{params[:id]}/coffee_roasts"
+  end
+
+  private
+
+  def coffee_roast_params
+    params.permit(:name, :origin, :elevation, :fresh)
   end
 end
