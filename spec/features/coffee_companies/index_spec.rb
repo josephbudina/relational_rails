@@ -17,15 +17,16 @@ RSpec.describe 'Coffee company index page', type: :feature do
         expect(page).to have_content('Coffee Companies')
         expect(page).to have_link(company_1.name)
         expect(page).to have_link(company_2.name)
-
-        expect(page).to have_link('New Coffee Company')
       end
 
       it "can see no coffee companies if there are none" do
         visit '/coffee_companies'
         expect(page).to have_content('Coffee Companies')
         expect(page).to have_content('No Coffee Companies!')
-        expect(page).to have_link('New Coffee Company')
+      end
+      it "has a link for a new coffee company" do
+        visit '/coffee_companies'
+        expect(page).to have_link("New Coffee Company")
       end
     end
   end
