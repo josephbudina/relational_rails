@@ -6,9 +6,5 @@
 <p>Local? <%= check_box_tag 'yes', '1', @company.local, :disabled => true %></p>
 <%= link_to "Update Coffee Company", "/coffee_companies/#{@company.id}/edit" %>
 <p>
-<form action="/coffee_companies/<%= @company.id %>" method="POST">
-  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-  <input type="hidden" name="_method" value="DELETE">
-  <input type="submit" value="Delete Company"/>
-</form>
+<%= button_to 'Delete Coffee Company', "/coffee_companies/#{@company.id}", method: :delete %>
 </p>
