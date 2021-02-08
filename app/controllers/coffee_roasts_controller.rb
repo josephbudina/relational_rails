@@ -28,6 +28,6 @@ class CoffeeRoastsController < ApplicationController
   private
 
   def coffee_roast_params
-    params.permit(:name, :origin, :elevation, :fresh)
+    params[:coffee_roast].permit(:name, :origin, :elevation, :fresh)
   end
 end

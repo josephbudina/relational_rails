@@ -2,7 +2,7 @@ class CoffeeCompanyRoastsController < ApplicationController
   def index
     if !params[:elevation_number].nil?
       elevation_number = params[:elevation_number]
-      company = CoffeeCompany.find(params[:id])
+      @company = CoffeeCompany.find(params[:id])
       @roasts = company.filter_by_elevation(elevation_number)
     else
       if !params[:alphabetical].nil?
