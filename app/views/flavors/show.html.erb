@@ -1,12 +1,12 @@
-<a href="/ice_cream_parlor">Parlor Index</a><br>
-<a href="/flavor">Flavors Index</a>
+<a href="/ice_cream_parlors">Parlor Index</a><br>
+<a href="/flavors">Flavors Index</a>
 <h1><%= @flavors.name %></h1>
 <p>Flavor Rating: <%= @flavors.flavor_rating%></p>
 <p>In Stock? <%= check_box_tag 'yes', '1', @flavors.in_stock, :disabled => true %></p>
 
-<a href="/flavor/<%= @flavors.id %>/edit">Update flavors</a>
+<a href="/flavors/<%= @flavors.id %>/edit">Update flavors</a>
 <p>
-<form action="/flavor/<%= @flavors.id %>" method="POST">
+<form action="/flavors/<%= @flavors.id %>" method="POST">
   <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
   <input type="hidden" name="_method" value="DELETE">
   <input type="submit" value="Delete flavors"/>

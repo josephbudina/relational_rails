@@ -5,14 +5,14 @@ RSpec.describe 'As a visitor' do
       little_man = IceCreamParlor.create!(name: 'little man', open: 'true', street_number: '42')
       scoops = IceCreamParlor.create!(name: 'scoops', open: 'true', street_number: '42')
 
-      visit "/ice_cream_parlor"
+      visit "/ice_cream_parlors"
       click_link 'little man'
-      expect(current_path).to eq("/ice_cream_parlor/#{little_man.id}")
+      expect(current_path).to eq("/ice_cream_parlors/#{little_man.id}")
       expect(page).to have_content("#{little_man.name}")
       expect(page).to have_content("#{little_man.street_number}")
-      visit "/ice_cream_parlor"
+      visit "/ice_cream_parlors"
       click_link 'scoops'
-      expect(current_path).to eq("/ice_cream_parlor/#{scoops.id}")
+      expect(current_path).to eq("/ice_cream_parlors/#{scoops.id}")
       expect(page).to have_content("#{scoops.name}")
       expect(page).to have_content("#{scoops.street_number}")
     end

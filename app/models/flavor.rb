@@ -7,4 +7,8 @@ class Flavor < ApplicationRecord
   def self.flavor_count
     count
   end
+
+  def self.flavor_rating_above(threshold)
+    where("flavor_rating > #{threshold}").count
+  end
 end

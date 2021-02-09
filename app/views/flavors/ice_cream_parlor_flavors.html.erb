@@ -1,8 +1,8 @@
-<a href="/ice_cream_parlor">Parlor Index</a><br>
-<a href="/flavor">Flavor Index</a>
+<a href="/ice_cream_parlors">Parlor Index</a><br>
+<a href="/flavors">Flavor Index</a>
 <h1>Ice Cream Flavors</h1>
 <% @parlors.flavors.each do |flavor| %>
-  <h3><a href="/flavor/<%= flavor.id %>"><%= flavor.name %></a></h3>
+  <h3><a href="/flavors/<%= flavor.id %>"><%= flavor.name %></a></h3>
 <% end %>
   <form>
     <input type="hidden" name="_method" value="GET" />
@@ -15,4 +15,4 @@
 <h3> All outta flavor!</h3>
 <% end %></br>
 
-<a href="/ice_cream_parlor/<%= @parlors.id %>/flavor/new">New flavor</a>
+<a href="/ice_cream_parlors/<%= @parlors.id %>/flavors/new">New flavor</a>

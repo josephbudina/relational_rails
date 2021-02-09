@@ -1,4 +1,4 @@
-class IceCreamParlorController < ApplicationController
+class IceCreamParlorsController < ApplicationController
   def index
     @parlors = IceCreamParlor.all.order_by_created_date
   end
@@ -19,7 +19,7 @@ class IceCreamParlorController < ApplicationController
     })
     
     parlor.save
-    redirect_to '/ice_cream_parlor'
+    redirect_to '/ice_cream_parlors'
   end
 
   def edit
@@ -35,11 +35,11 @@ class IceCreamParlorController < ApplicationController
     })
 
     parlor.save
-    redirect_to "/ice_cream_parlor/#{parlor.id}"
+    redirect_to "/ice_cream_parlors/#{parlor.id}"
   end
 
   def destroy
-    IceCreamParlor.destroy(params[:id])
-    redirect_to '/ice_cream_parlor'
+    IceCreamParlors.destroy(params[:id])
+    redirect_to '/ice_cream_parlors'
   end
 end
