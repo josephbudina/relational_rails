@@ -3,6 +3,11 @@
 
 <% @flavors.each do |flavor| %>
   <h3><a href="/flavor/<%= flavor.id %>"><%= flavor.name %></a></h3>
+  <a href="/flavor/<%= flavor.id  %>/edit">Edit</a>
+  <form action="/flavor/<%= flavor.id %>" method="POST">
+    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+    <input type="hidden" name="_method" value="DELETE">
+    <input type="submit" value="delete"/>
 <% end %>
 
 <% if @flavors.empty? %>
