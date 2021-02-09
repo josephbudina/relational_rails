@@ -33,5 +33,6 @@ Rails.application.routes.draw do
   get '/flavor/:id', to: 'flavor#show'
   patch '/flavor/:id', to: 'flavor#update'
   delete '/flavor/:id', to: 'flavor#destroy'
+
   get '/coffee_companies/:id/coffee_roasts_filtered', to: 'coffee_company_roasts#index'
 end
