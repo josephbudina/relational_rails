@@ -1,16 +1,13 @@
-<form action="/coffee_roasts/<%= @roast.id %>" method="post">
-  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-  <input type="hidden" name="_method" value="PATCH" />
-  <h2>Edit</h2>
-  <p>Name:</p>
-  <input type='text' name='roast[name]' value="<%= @roast.name %>"/><br/>
-  <p>Origin:</p>
-  <textarea name='roast[origin]'><%= @roast.origin %></textarea><br/>
-  <p>Elevation:</p>
-  <input type='text' name='roast[elevation]' value="<%= @roast.elevation %>"/><br/>
-  <p>
-    <label for="fresh">Fresh?</label>
-    <input type='checkbox' name='roast[fresh]' <%= @roast.fresh ? 'checked' : '' %>/><br/>
-  </p>
-  <input type='submit' value="Update Roast"/>
-</form>
+<%= link_to "Coffee Company Index", "/coffee_companies" %></br>
+<%= link_to "Coffee Roast Index", "/coffee_roasts" %></br>
+<%= form_with url: "/coffee_roasts/#{@roast.id}", model: @roast, method: :patch, local: true do |form| %>
+  <p><%= form.label :name %></br>
+  <%= form.text_field :name %></p>
+  <p><%= form.label :origin%></br>
+  <%= form.text_field :origin %></p>
+  <p><%= form.label :elevation %></br>
+  <%= form.number_field :elevation %></p>
+  <p><%= form.label :fresh %>
+  <%= form.check_box :fresh %></p>
+  <%= form.submit 'Update Coffee Roast' %>
+<% end %>

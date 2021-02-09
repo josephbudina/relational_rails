@@ -2,20 +2,16 @@ class CoffeeCompanyRoastsController < ApplicationController
   def index
     if !params[:elevation_number].nil?
       elevation_number = params[:elevation_number]
-      company = CoffeeCompany.find(params[:id])
-      @roasts = company.filter_by_elevation(elevation_number)
+      @company = CoffeeCompany.find(params[:id])
+      @roasts = @company.filter_by_elevation(elevation_number)
     else
+      @company = CoffeeCompany.find(params[:id])
       if !params[:alphabetical].nil?
-        @roasts = CoffeeCompany.find(params[:id]).order_alphabetically
+        @roasts = @company.order_alphabetically
       else
-        @roasts = CoffeeCompany.find(params[:id]).coffee_roast
+        @roasts = @company.coffee_roast
       end
     end
-  end
-
-  def show
-    @company = CoffeeCompany.find(params[:id])
-    @roast_count = @company.coffee_roast.count_of_roasts
   end
 
   def new
@@ -23,17 +19,18 @@ class CoffeeCompanyRoastsController < ApplicationController
   end
 
   def create
-    if params[:roast][:fresh].nil?
-      params[:roast][:fresh] = false
-    end
-
     roast = CoffeeRoast.create!({
-      name: params[:roast][:name],
+      name: params[:name],
       coffee_company_id: params[:id],
-      origin: params[:roast][:origin],
-      elevation: params[:roast][:elevation],
-      fresh: params[:roast][:fresh],
+      origin: params[:origin],
+      elevation: params[:elevation],
+      fresh: params[:fresh],
       })
     redirect_to "/coffee_companies/#{params[:id]}/coffee_roasts"
+  end
+
+  def destroy
+    CoffeeRoast.destroy(params[:id])
+    redirect_to "/coffee_companies/#{params[:company_id]}/coffee_roasts"
   end
 end

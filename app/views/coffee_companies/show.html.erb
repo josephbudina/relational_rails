@@ -1,15 +1,11 @@
-<a href="/coffee_companies">Coffee Company Index</a>
+<%= link_to "Coffee Company Index", "/coffee_companies" %></br>
+<%= link_to "Coffee Roast Index", "/coffee_roasts" %></br>
 <h1><%= @company.name %></h1>
 <p>Number of Coffee Roasts: <%= @roast_count %></p>
-<a href="/coffee_companies/<%= @company.id %>/coffee_roasts">View Roasts</a>
+<%= link_to "View Roasts", "/coffee_companies/#{@company.id}/coffee_roasts" %>
 <p>Address: <%= @company.address%> <%= @company.zipcode %></p>
 <p>Local? <%= check_box_tag 'yes', '1', @company.local, :disabled => true %></p>
-
-<a href="/coffee_companies/<%= @company.id %>/edit">Update Company</a>
+<%= link_to "Update Coffee Company", "/coffee_companies/#{@company.id}/edit" %>
 <p>
-<form action="/coffee_companies/<%= @company.id %>" method="POST">
-  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-  <input type="hidden" name="_method" value="DELETE">
-  <input type="submit" value="Delete Company"/>
-</form>
+<%= button_to 'Delete Coffee Company', "/coffee_companies/#{@company.id}", method: :delete %>
 </p>

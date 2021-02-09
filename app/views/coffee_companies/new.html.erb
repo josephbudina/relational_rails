@@ -1,13 +1,13 @@
-<form action="/coffee_companies" method="post">
-  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-  <h3>Add New Company:</h3>
-  <p>Name:</p>
-  <input type='text' name='company[name]'>
-  <p>Address:</p>
-  <input type='text' name='company[address]'>
-  <p>Zipcode:</p>
-  <input type='text' name='company[zipcode]'>
-  <p>Local?:
-  <input type='checkbox' name='company[local]'/><br/></p>
-  <input type='submit' value="Create Company"/>
-</form>
+<%= link_to "Coffee Company Index", "/coffee_companies" %></br>
+<%= link_to "Coffee Roast Index", "/coffee_roasts" %></br>
+<%= form_with url: "/coffee_companies", method: :post, local: true do |form| %>
+  <p><%= form.label :name %></br>
+  <%= form.text_field :name %></p>
+  <p><%= form.label :address%></br>
+  <%= form.text_field :address %></p>
+  <p><%= form.label :zipcode %></br>
+  <%= form.number_field :zipcode %></p>
+  <p><%= form.label :local %>
+  <%= form.check_box :local %></p>
+  <%= form.submit 'Create Coffee Company' %>
+<% end %>

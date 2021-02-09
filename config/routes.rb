@@ -25,6 +25,11 @@ Rails.application.routes.draw do
   patch '/coffee_roasts/:id', to: 'coffee_roasts#update'
   post '/coffee_companies/:id/coffee_roasts', to: 'coffee_company_roasts#create'
   delete 'coffee_roasts/:id', to: 'coffee_roasts#destroy'
+
+  get 'coffee_companies/:id/coffee_roasts/:id/edit', to: 'coffee_company_roasts#edit'
+  patch 'coffee_companies/:id/coffee_roasts/:id', to: 'coffee_company_roasts#update'
+  delete 'coffee_companies/:id/coffee_roasts/:id', to: 'coffee_company_roasts#destroy'
+
   get '/flavors', to: 'flavors#index'
   get '/ice_cream_parlors/:id/flavors', to: 'flavors#ice_cream_parlor_flavors'
   get 'ice_cream_parlors/:id/flavors/new', to: 'flavors#new'
@@ -34,5 +39,4 @@ Rails.application.routes.draw do
   patch '/flavors/:id', to: 'flavors#update'
   delete '/flavors/:id', to: 'flavors#destroy'
 
-  get '/coffee_companies/:id/coffee_roasts_filtered', to: 'coffee_company_roasts#index'
 end

@@ -1,16 +1,13 @@
-<form action="/coffee_companies/<%= @company.id %>" method="post">
-  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-  <input type="hidden" name="_method" value="PATCH" />
-  <h2>Edit</h2>
-  <p>Name:</p>
-  <input type='text' name='company[name]' value="<%= @company.name %>"/><br/>
-  <p>Address:</p>
-  <textarea name='company[address]'><%= @company.address %></textarea><br/>
-  <p>Zipcode:</p>
-  <input type='text' name='company[zipcode]' value="<%= @company.zipcode %>"/><br/>
-  <p>
-    <label for="local">Local?</label>
-    <input type='checkbox' name='company[local]' <%= @company.local ? 'checked' : '' %>/><br/>
-  </p>
-  <input type='submit' value="Update Company"/>
-</form>
+<%= link_to "Coffee Company Index", "/coffee_companies" %></br>
+<%= link_to "Coffee Roast Index", "/coffee_roasts" %></br>
+<%= form_with url: "/coffee_companies/#{@company.id}", model: @company, method: :patch, local: true do |form| %>
+  <p><%= form.label :name %></br>
+  <%= form.text_field :name%></p>
+  <p><%= form.label :address%></br>
+  <%= form.text_field :address %></p>
+  <p><%= form.label :zipcode %></br>
+  <%= form.number_field :zipcode %></p>
+  <p><%= form.label :local %>
+  <%= form.check_box :local %></p>
+  <%= form.submit 'Update Coffee Company' %>
+<% end %>

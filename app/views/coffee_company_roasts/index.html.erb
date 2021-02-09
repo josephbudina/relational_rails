@@ -1,21 +1,29 @@
 <h1>Coffee Roasts</h1>
-<form action="/coffee_companies/<%= @roasts.first.coffee_company.id %>/coffee_roasts" method="get">
-  <input type="hidden" name="_method" value="GET" />
-  <input type= 'text' name='elevation_number'/>
-  <input type='submit' value="Only return records with more than #num in elevation"/>
-  </form></br>
-  <form action="/coffee_companies/<%= @roasts.first.coffee_company.id %>/coffee_roasts" method="get">
-    <input type="hidden" name="_method" value="GET" />
-    <input type= 'hidden' name='alphabetical' value = "true"/>
-    <input type='submit' value="Sort Alphabetically"/>
-  </form>
+<%= link_to "Coffee Company Index", "/coffee_companies" %></br>
+<%= link_to "Coffee Roast Index", "/coffee_roasts" %></br>
+<p><%= form_with url:"/coffee_companies/#{@company.id}/coffee_roasts", method: :get, local: true do |form| %>
+<%= form.label 'Only Return Records With Elevation Higher Than Number:' %></br>
+<%= form.text_field :elevation_number %>
+<%= form.submit 'Submit' %>
+<% end %></p>
+</br>
+<%= form_with url:"/coffee_companies/#{@company.id}/coffee_roasts", method: :get, local: true do |form| %>
+<%= form.hidden_field :alphabetical %>
+<%= form.submit 'Sort Alphabetically' %>
+<% end %>
+</br>
 
 <% @roasts.each do |roast| %>
-  <h3><a href="/coffee_roasts/<%= roast.id %>"><%= roast.name %></a></h3>
+  <h3><%= link_to "#{roast.name}", "/coffee_roasts/#{roast.id}" %></h3>
+  <p><%= button_to 'Update', "/coffee_roasts/#{roast.id}/edit", method: :get %></p>
+
+  <p><%= form_with url:"/coffee_companies/#{@company.id}/coffee_roasts/#{roast.id}", method: :delete, local: true do |form| %>
+  <%= form.hidden_field :company_id, value: "#{@company.id}" %>
+  <%= form.submit 'Delete' %>
+  <% end %></p>
 <% end %>
 
 <% if @roasts.empty? %>
 <h3> No Coffee Roasts!</h3>
 <% end %>
-
-<a href="/coffee_companies/<%= @roasts.first.coffee_company.id %>/coffee_roasts/new">New Coffee Roast</a>
+<h3><%= link_to "New Coffee Roast","/coffee_companies/#{@company.id}/coffee_roasts/new" %></h3>
