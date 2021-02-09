@@ -1,6 +1,6 @@
 class FlavorController < ApplicationController
   def index
-    @flavors = Flavor.all
+    @flavors = Flavor.where(in_stock: true)
   end
 
   def show

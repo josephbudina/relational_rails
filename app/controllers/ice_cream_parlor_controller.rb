@@ -8,6 +8,7 @@ class IceCreamParlorController < ApplicationController
   
   def show
     @parlors = IceCreamParlor.find(params[:id])
+    @flavor_count = @parlors.flavors.flavor_count
   end
 
   def create
