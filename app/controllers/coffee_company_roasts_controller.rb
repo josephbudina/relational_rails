@@ -5,6 +5,7 @@ class CoffeeCompanyRoastsController < ApplicationController
       @company = CoffeeCompany.find(params[:id])
       @roasts = company.filter_by_elevation(elevation_number)
     else
+      @company = CoffeeCompany.find(params[:id])
       if !params[:alphabetical].nil?
         @roasts = CoffeeCompany.find(params[:id]).order_alphabetically
       else
@@ -23,7 +24,17 @@ class CoffeeCompanyRoastsController < ApplicationController
   end
 
   def create
-    CoffeeRoast.create!(coffee_roast_params)
+    if params[:fresh].nil?
+      params[:fresh] = false
+    end
+
+    roast = CoffeeRoast.create!({
+      name: params[:name],
+      coffee_company_id: params[:id],
+      origin: params[:origin],
+      elevation: params[:elevation],
+      fresh: params[:fresh],
+      })
     redirect_to "/coffee_companies/#{params[:id]}/coffee_roasts"
   end
 
