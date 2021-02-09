@@ -28,4 +28,9 @@ class CoffeeCompanyRoastsController < ApplicationController
       })
     redirect_to "/coffee_companies/#{params[:id]}/coffee_roasts"
   end
+
+  def destroy
+    CoffeeRoast.destroy(params[:id])
+    redirect_to "/coffee_companies/#{params[:company_id]}/coffee_roasts"
+  end
 end

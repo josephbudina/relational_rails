@@ -1,7 +1,8 @@
 <h1>Coffee Roasts</h1>
 <%= form_with url:"/coffee_companies/#{@company.id}/coffee_roasts", method: :get, local: true do |form| %>
+<%= form.label 'Only Return Records With Elevation Higher Than Number:' %></br>
 <%= form.text_field :elevation_number %>
-<%= form.submit 'Only Return Records With Elevation Higher Than Number' %>
+<%= form.submit 'Submit' %>
 <% end %>
 </br>
 <%= form_with url:"/coffee_companies/#{@company.id}/coffee_roasts", method: :get, local: true do |form| %>
@@ -12,6 +13,12 @@
 
 <% @roasts.each do |roast| %>
   <h3><%= link_to "#{roast.name}", "/coffee_roasts/#{roast.id}" %></h3>
+  <p><%= button_to 'Update', "/coffee_roasts/#{roast.id}/edit" %></p>
+
+  <p><%= form_with url:"/coffee_companies/#{@company.id}/coffee_roasts/#{roast.id}", method: :delete, local: true do |form| %>
+  <%= form.hidden_field :company_id, value: "#{@company.id}" %>
+  <%= form.submit 'Delete' %>
+  <% end %></p>
 <% end %>
 
 <% if @roasts.empty? %>

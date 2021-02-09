@@ -1,9 +1,9 @@
 <h1>Coffee Companies</h1>
 <% @companies.each do |company| %>
-<p><%= link_to "#{company.name}", "/coffee_companies/#{company.id}" %>
- Created At: <%= company.created_at %>
-<%= link_to 'Update', "/coffee_companies/#{company.id}/edit" %></p>
-<%= button_to 'Delete', "/coffee_companies/#{company.id}", method: :delete, id: "@company.id"%>
+<h3><%= link_to "#{company.name}", "/coffee_companies/#{company.id}" %>
+ Created At: <%= company.created_at %></h3>
+<p><%= button_to 'Update', "/coffee_companies/#{company.id}/edit" %></p>
+<p><%= button_to 'Delete', "/coffee_companies/#{company.id}", method: :delete, id: "@company.id"%></p>
 <% end %>
 
 <% if @companies.empty? %>

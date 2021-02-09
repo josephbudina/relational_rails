@@ -6,21 +6,21 @@ RSpec.describe 'Coffee Company Roast index page', type: :feature do
       it "I can see each coffee roast associated with that coffee company" do
         CoffeeRoast.destroy_all
         CoffeeCompany.destroy_all
-        comp1 = CoffeeCompany.create!(name: 'Round Mountain Coffee',
+        company_1 = CoffeeCompany.create!(name: 'Round Mountain Coffee',
                                       address: '2850 Prince St.',
                                       zipcode: 72034,
                                       local: true)
 
-        roast1 = comp1.coffee_roast.create!(name: 'Pinnacle',
+        roast1 = company_1.coffee_roast.create!(name: 'Pinnacle',
                                   origin: 'test',
                                   elevation: 1000,
                                   fresh: true)
-        roast2 = comp1.coffee_roast.create!(name: 'Ouachita',
+        roast2 = company_1.coffee_roast.create!(name: 'Ouachita',
                                   origin: 'test 2',
                                   elevation: 2000,
                                   fresh: true)
 
-        visit "/coffee_companies/#{comp1.id}/coffee_roasts"
+        visit "/coffee_companies/#{company_1.id}/coffee_roasts"
         expect(page).to have_content('Coffee Roasts')
         expect(page).to have_link(roast1.name)
         expect(page).to have_link(roast2.name)
@@ -29,11 +29,11 @@ RSpec.describe 'Coffee Company Roast index page', type: :feature do
       it "can see no coffee roasts if there are none" do
         CoffeeRoast.destroy_all
         CoffeeCompany.destroy_all
-        comp1 = CoffeeCompany.create!(name: 'Round Mountain Coffee',
+        company_1 = CoffeeCompany.create!(name: 'Round Mountain Coffee',
                                       address: '2850 Prince St.',
                                       zipcode: 72034,
                                       local: true)
-        visit "/coffee_companies/#{comp1.id}/coffee_roasts"
+        visit "/coffee_companies/#{company_1.id}/coffee_roasts"
         expect(page).to have_content('Coffee Roasts')
         expect(page).to have_content('No Coffee Roasts!')
       end
@@ -42,24 +42,24 @@ RSpec.describe 'Coffee Company Roast index page', type: :feature do
         it "only returns coffee roasts with elevation higher than that number" do
           CoffeeRoast.destroy_all
           CoffeeCompany.destroy_all
-          comp1 = CoffeeCompany.create!(name: 'Round Mountain Coffee',
+          company_1 = CoffeeCompany.create!(name: 'Round Mountain Coffee',
                                         address: '2850 Prince St.',
                                         zipcode: 72034,
                                         local: true)
 
-          roast1 = comp1.coffee_roast.create!(name: 'Pinnacle',
+          roast1 = company_1.coffee_roast.create!(name: 'Pinnacle',
                                     origin: 'test',
                                     elevation: 1000,
                                     fresh: true)
-          roast2 = comp1.coffee_roast.create!(name: 'Ouachita',
+          roast2 = company_1.coffee_roast.create!(name: 'Ouachita',
                                     origin: 'test 2',
                                     elevation: 2000,
                                     fresh: true)
 
-          visit "/coffee_companies/#{comp1.id}/coffee_roasts"
-
+          visit "/coffee_companies/#{company_1.id}/coffee_roasts"
+          expect(page).to have_content('Only return records with elevation higher than number:')
           fill_in('elevation_number', with: 1500)
-          click_on("Only Return Records With Elevation Higher Than Number")
+          click_on('Submit')
           expect(page).to have_content('Coffee Roasts')
           expect(page).to_not have_link(roast1.name)
           expect(page).to have_link(roast2.name)
@@ -71,21 +71,21 @@ RSpec.describe 'Coffee Company Roast index page', type: :feature do
           it "I see coffee roasts in alphabetical order" do
             CoffeeRoast.destroy_all
             CoffeeCompany.destroy_all
-            comp1 = CoffeeCompany.create!(name: 'Round Mountain Coffee',
+            company_1 = CoffeeCompany.create!(name: 'Round Mountain Coffee',
                                           address: '2850 Prince St.',
                                           zipcode: 72034,
                                           local: true)
 
-            roast1 = comp1.coffee_roast.create!(name: 'Pinnacle',
+            roast1 = company_1.coffee_roast.create!(name: 'Pinnacle',
                                       origin: 'test',
                                       elevation: 1000,
                                       fresh: true)
-            roast2 = comp1.coffee_roast.create!(name: 'Ouachita',
+            roast2 = company_1.coffee_roast.create!(name: 'Ouachita',
                                       origin: 'test 2',
                                       elevation: 2000,
                                       fresh: true)
 
-            visit "/coffee_companies/#{comp1.id}/coffee_roasts"
+            visit "/coffee_companies/#{company_1.id}/coffee_roasts"
 
             click_on("Sort Alphabetically")
             expect(page).to have_content('Coffee Roasts')
@@ -93,6 +93,45 @@ RSpec.describe 'Coffee Company Roast index page', type: :feature do
             expect(page).to have_link(roast2.name)
           end
         end
+      end
+
+      it "I see a link to edit roast information beside each coffee roast" do
+        company_1 = CoffeeCompany.create(name:"Round Mountain Coffee",
+                                        address: "123 Prince St",
+                                        zipcode: 72034,
+                                        local: true)
+        roast1 = company_1.coffee_roast.create!(name: 'Pinnacle',
+                                  origin: 'test',
+                                  elevation: 1000,
+                                  fresh: true)
+        roast2 = company_1.coffee_roast.create!(name: 'Ouachita',
+                                  origin: 'test 2',
+                                  elevation: 2000,
+                                  fresh: true)
+
+        visit "/coffee_companies/#{company_1.id}/coffee_roasts"
+        expect(page).to have_link(roast1.name)
+        expect(page).to have_button("Update")
+        expect(page).to have_link(roast2.name)
+      end
+
+      it "I see a link to delete each coffee roast" do
+        company_1 = CoffeeCompany.create(name:"Round Mountain Coffee",
+                                        address: "123 Prince St",
+                                        zipcode: 72034,
+                                        local: true)
+        roast1 = company_1.coffee_roast.create!(name: 'Pinnacle',
+                                  origin: 'test',
+                                  elevation: 1000,
+                                  fresh: true)
+
+        visit "/coffee_companies/#{company_1.id}/coffee_roasts"
+        expect(page).to have_link(roast1.name)
+        expect(page).to have_button("Delete")
+
+        click_on("Delete")
+        expect(current_path).to eq("/coffee_companies/#{company_1.id}/coffee_roasts")
+        expect(page).to_not have_link(roast1.name)
       end
     end
   end

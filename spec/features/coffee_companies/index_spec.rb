@@ -58,7 +58,7 @@ RSpec.describe 'Coffee company index page', type: :feature do
                                         local: false)
         visit '/coffee_companies'
         expect(page).to have_link(company_1.name)
-        expect(page).to have_link("Update")
+        expect(page).to have_button("Update")
         expect(page).to have_link(company_2.name)
       end
 
@@ -70,7 +70,7 @@ RSpec.describe 'Coffee company index page', type: :feature do
         visit '/coffee_companies'
         expect(page).to have_link(company_1.name)
         expect(page).to have_button("Delete")
-        
+
         click_on("Delete")
         expect(current_path).to eq('/coffee_companies')
         expect(page).to_not have_link(company_1.name)
