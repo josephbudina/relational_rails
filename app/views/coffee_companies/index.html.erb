@@ -3,7 +3,7 @@
 <p><%= link_to "#{company.name}", "/coffee_companies/#{company.id}" %>
  Created At: <%= company.created_at %>
 <%= link_to 'Update', "/coffee_companies/#{company.id}/edit" %></p>
-<%= button_to 'Delete', "/coffee_companies/#{company.id}", method: :delete %>
+<%= button_to 'Delete', "/coffee_companies/#{company.id}", method: :delete, id: "@company.id"%>
 <% end %>
 
 <% if @companies.empty? %>
