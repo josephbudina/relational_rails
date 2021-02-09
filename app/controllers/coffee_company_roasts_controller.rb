@@ -14,20 +14,11 @@ class CoffeeCompanyRoastsController < ApplicationController
     end
   end
 
-  def show
-    @company = CoffeeCompany.find(params[:id])
-    @roast_count = @company.coffee_roast.count_of_roasts
-  end
-
   def new
     @company = CoffeeCompany.find(params[:id])
   end
 
   def create
-    if params[:fresh].nil?
-      params[:fresh] = false
-    end
-
     roast = CoffeeRoast.create!({
       name: params[:name],
       coffee_company_id: params[:id],
@@ -36,11 +27,5 @@ class CoffeeCompanyRoastsController < ApplicationController
       fresh: params[:fresh],
       })
     redirect_to "/coffee_companies/#{params[:id]}/coffee_roasts"
-  end
-
-  private
-
-  def coffee_roast_params
-    params.permit(:name, :origin, :elevation, :fresh)
   end
 end
