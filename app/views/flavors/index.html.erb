@@ -1,10 +1,10 @@
-<a href="/ice_cream_parlor">Parlor Index</a>
+<a href="/ice_cream_parlors">Parlor Index</a>
 <h1>Flavors</h1>
 
 <% @flavors.each do |flavor| %>
-  <h3><a href="/flavor/<%= flavor.id %>"><%= flavor.name %></a></h3>
-  <a href="/flavor/<%= flavor.id  %>/edit">Edit</a>
-  <form action="/flavor/<%= flavor.id %>" method="POST">
+  <h3><a href="/flavors/<%= flavor.id %>"><%= flavor.name %></a></h3>
+  <a href="/flavors/<%= flavor.id  %>/edit">Edit</a>
+  <form action="/flavors/<%= flavor.id %>" method="POST">
     <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
     <input type="hidden" name="_method" value="DELETE">
     <input type="submit" value="delete"/>

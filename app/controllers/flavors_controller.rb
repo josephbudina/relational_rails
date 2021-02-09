@@ -1,4 +1,4 @@
-class FlavorController < ApplicationController
+class FlavorsController < ApplicationController
   def index
     @flavors = Flavor.where(in_stock: true)
   end
@@ -20,13 +20,13 @@ class FlavorController < ApplicationController
       params[:flavor][:in_stock] = false
     end
 
-    flavor = Flavor.create!({
+    flavor = Flavors.create!({
       name: params[:flavor][:name],
       ice_cream_parlor_id: params[:id],
       flavor_rating: params[:flavor][:flavor_rating],
       in_stock: params[:flavor][:in_stock]
       })
-    redirect_to "/ice_cream_parlor/#{params[:id]}/flavor"
+    redirect_to "/ice_cream_parlors/#{params[:id]}/flavors"
   end
 
   def edit
@@ -46,11 +46,11 @@ class FlavorController < ApplicationController
       })
     flavor.save
 
-    redirect_to "/flavor/#{flavor.id}"
+    redirect_to "/flavors/#{flavor.id}"
   end
 
   def destroy
-    Flavor.destroy(params[:id])
-    redirect_to "/flavor"
+    Flavors.destroy(params[:id])
+    redirect_to "/flavors"
   end
 end

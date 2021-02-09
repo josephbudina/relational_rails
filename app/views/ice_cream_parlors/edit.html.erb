@@ -1,6 +1,6 @@
-<a href="/ice_cream_parlor">Parlor Index</a><br>
-<a href="/flavor">Flavor Index</a>
-<form action="/ice_cream_parlor/<%= @parlors.id %>" method="post">
+<a href="/ice_cream_parlors">Parlor Index</a><br>
+<a href="/flavors">Flavor Index</a>
+<form action="/ice_cream_parlors/<%= @parlors.id %>" method="post">
   <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
   <input type="hidden" name="_method" value="PATCH" />
   <p>Edit</p>
