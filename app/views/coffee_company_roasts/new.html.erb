@@ -1,3 +1,5 @@
+<%= link_to "Coffee Company Index", "/coffee_companies" %></br>
+<%= link_to "Coffee Roast Index", "/coffee_roasts" %></br>
 <%= form_with url: "/coffee_companies/#{@company.id}/coffee_roasts", method: :post, local: true do |form| %>
   <p><%= form.label :name %></br>
   <%= form.text_field :name %></p>
