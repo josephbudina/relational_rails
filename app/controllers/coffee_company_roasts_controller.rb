@@ -3,13 +3,13 @@ class CoffeeCompanyRoastsController < ApplicationController
     if !params[:elevation_number].nil?
       elevation_number = params[:elevation_number]
       @company = CoffeeCompany.find(params[:id])
-      @roasts = company.filter_by_elevation(elevation_number)
+      @roasts = @company.filter_by_elevation(elevation_number)
     else
       @company = CoffeeCompany.find(params[:id])
       if !params[:alphabetical].nil?
-        @roasts = CoffeeCompany.find(params[:id]).order_alphabetically
+        @roasts = @company.order_alphabetically
       else
-        @roasts = CoffeeCompany.find(params[:id]).coffee_roast
+        @roasts = @company.coffee_roast
       end
     end
   end
