@@ -1,6 +1,6 @@
 class IceCreamParlorController < ApplicationController
   def index
-    @parlors = IceCreamParlor.all
+    @parlors = IceCreamParlor.all.order_by_created_date
   end
 
   def new
@@ -8,6 +8,7 @@ class IceCreamParlorController < ApplicationController
   
   def show
     @parlors = IceCreamParlor.find(params[:id])
+    @flavor_count = @parlors.flavors.flavor_count
   end
 
   def create

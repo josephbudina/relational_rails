@@ -1,0 +1,18 @@
+<a href="/ice_cream_parlor">Parlor Index</a><br>
+<a href="/flavor">Flavor Index</a>
+<h1>Ice Cream Flavors</h1>
+<% @parlors.flavors.each do |flavor| %>
+  <h3><a href="/flavor/<%= flavor.id %>"><%= flavor.name %></a></h3>
+<% end %>
+  <form>
+    <input type="hidden" name="_method" value="GET" />
+    <label for="rating">Find Flavors with specified ratings or higher:</label><br>
+    <input type='text' name='Flavor rating'></br>
+    <input type='submit' value="Only return records with more than number of Flavor Rating"/>
+  </form>
+
+<% if @parlors.flavors.empty? %>
+<h3> All outta flavor!</h3>
+<% end %></br>
+
+<a href="/ice_cream_parlor/<%= @parlors.id %>/flavor/new">New flavor</a>

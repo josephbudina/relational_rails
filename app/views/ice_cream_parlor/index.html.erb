@@ -1,7 +1,8 @@
+<a href="/flavor">Flavor Index</a>
 <h1>Parlors<h1>
 
 <% @parlors.each do |parlor| %>
-  <h3><a href="/ice_cream_parlor/<%= parlor.id %>"><%= parlor.name %></a></h3>
+  <h3><a href="/ice_cream_parlor/<%= parlor.id %>"><%= parlor.name %></a>Created At: <%= parlor.created_at %></h3>
   <a href="/ice_cream_parlor/<%= parlor.id  %>/edit">Edit</a>
   <form action="/ice_cream_parlor/<%= parlor.id %>" method="POST">
     <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">

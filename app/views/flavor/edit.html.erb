@@ -1,0 +1,16 @@
+<a href="/ice_cream_parlor">Parlor Index</a><br>
+<a href="/flavor">Flavor Index</a>
+<form action="/flavor/<%= @flavors.id %>" method="post">
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+  <input type="hidden" name="_method" value="PATCH" />
+  <h2>EDIT</h2>
+  <p>NAME:</p>
+  <input type='text' name='flavor[name]' value="<%= @flavors.name %>"/><br/>
+  <p>Flavor Rating:</p>
+  <textarea name='flavor[flavor_rating]'><%= @flavors.flavor_rating %></textarea><br/>
+  <p>
+    <label for="in_stock">In Stock?</label>
+    <input type='text' name='flavor[in_stock]' value="<%= @flavors.in_stock %>"/><br/>
+  </p>
+    <input type='submit' value="Update Flavor"/>
+</form>
