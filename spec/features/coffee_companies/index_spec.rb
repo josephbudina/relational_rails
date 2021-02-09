@@ -61,6 +61,24 @@ RSpec.describe 'Coffee company index page', type: :feature do
         expect(page).to have_link("Update")
         expect(page).to have_link(company_2.name)
       end
+
+      it "I see a link to delete each coffee company" do
+        company_1 = CoffeeCompany.create(name:"Round Mountain Coffee",
+                                        address: "123 Prince St",
+                                        zipcode: 72034,
+                                        local: true)
+        company_2 = CoffeeCompany.create(name:"Onyx Coffee Labs",
+                                        address: "123 W St",
+                                        zipcode: 72712,
+                                        local: false)
+        visit '/coffee_companies'
+        expect(page).to have_link(company_1.name)
+        expect(page).to have_button("Delete")
+        expect(page).to have_link(company_2.name)
+        click_on("Delete")
+        expect(current_path).to eq('/coffee_companies')
+        expect(page).to_not have_link(company_1.name)
+      end
     end
   end
 end
