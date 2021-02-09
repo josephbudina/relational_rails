@@ -14,7 +14,7 @@ RSpec.describe 'The coffee company creation page', type: :feature do
             fill_in('Name', with: 'Round Mountain')
             fill_in('Address', with: '123 Prince St')
             fill_in('Zipcode', with: 72034)
-
+            check 'Local'
             click_on('Create Coffee Company')
             expect(page).to have_content('Round Mountain')
           end

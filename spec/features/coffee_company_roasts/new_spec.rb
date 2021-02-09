@@ -19,7 +19,7 @@ RSpec.describe 'Coffee Company Roast create page', type: :feature do
             fill_in('Name', with: 'Pinnacle')
             fill_in('Origin', with: 'Colombia')
             fill_in('Elevation', with: 1500)
-
+            check 'Fresh'
             click_on('Create Coffee Roast')
             expect(page).to have_content('Pinnacle')
           end
