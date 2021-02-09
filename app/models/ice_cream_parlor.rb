@@ -4,4 +4,8 @@ class IceCreamParlor < ApplicationRecord
                           :street_number
   validates_uniqueness_of :name
   has_many  :flavors
+
+  def self.order_by_created_date
+    order('created_at desc')
+  end
 end
