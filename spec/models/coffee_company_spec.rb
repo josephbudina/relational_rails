@@ -44,13 +44,13 @@ RSpec.describe CoffeeCompany, type: :model do
   end
 
   describe "instance methods" do
-    describe "::filter_by_elevation" do
+    describe "#filter_by_elevation" do
       it 'filters roasts that are greater than elevation input' do
         expect(@comp1.filter_by_elevation(1500)).to eq([@roast2])
       end
     end
 
-    describe "::order_alphabetically" do
+    describe "#order_alphabetically" do
       it 'orders roasts alphabetically by name' do
         expect(@comp1.order_alphabetically.to_a).to eq([@roast2, @roast1])
       end
