@@ -10,6 +10,14 @@ class CoffeeCompany < ApplicationRecord
     order(created_at: :desc)
   end
 
+  def self.order_by_roast_count
+    left_joins(:coffee_roast)
+    .group(:id)
+    .where
+    .not(coffee_roast:[nil])
+    .order("count(coffee_roasts.id) desc")
+  end
+
   def filter_by_elevation(elevation)
     coffee_roast.where("elevation > ?", elevation)
   end

@@ -1,8 +1,15 @@
 <h1>Coffee Companies</h1>
 <%= link_to "Coffee Roast Index", "/coffee_roasts" %></br>
+<p><%= form_with url:"/coffee_companies", method: :get, local: true do |form| %>
+<%= form.hidden_field :order_by_roasts %>
+<%= form.submit 'Sort By Number of Coffee Roasts' %>
+<% end %></p>
 <% @companies.each do |company| %>
 <h3><%= link_to "#{company.name}", "/coffee_companies/#{company.id}" %>
  Created At: <%= company.created_at %></h3>
+ <% if @show_roasts == true %>
+ <p>Number of Roasts: <%= company.coffee_roast.count_of_roasts %></p>
+ <% end %>
 <p><%= button_to 'Update', "/coffee_companies/#{company.id}/edit", method: :get%></p>
 <p><%= button_to 'Delete', "/coffee_companies/#{company.id}", method: :delete, id: "@company.id"%></p>
 <% end %>

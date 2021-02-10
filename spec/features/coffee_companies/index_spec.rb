@@ -75,6 +75,54 @@ RSpec.describe 'Coffee company index page', type: :feature do
         expect(current_path).to eq('/coffee_companies')
         expect(page).to_not have_link(company_1.name)
       end
+
+      describe "I see a button to order by coffee roast count" do
+        describe "When I click the button" do
+          it "" do
+            CoffeeRoast.destroy_all
+            CoffeeCompany.destroy_all
+
+            comp1 = CoffeeCompany.create!(name: 'Round Mountain Coffee',
+                                          address: '2850 Prince St.',
+                                          zipcode: 72034,
+                                          local: true)
+
+            comp1.coffee_roast.create!(name: 'Pinnacle',
+                                      origin: 'test',
+                                      elevation: 1000,
+                                      fresh: true)
+            comp1.coffee_roast.create!(name: 'Ouachita',
+                                      origin: 'test 2',
+                                      elevation: 2000,
+                                      fresh: true)
+
+            comp2 = CoffeeCompany.create!(name: 'Onyx Coffee Labs',
+                                          address: '101 E Walnut St.',
+                                          zipcode: 721414,
+                                          local: false)
+
+            comp2.coffee_roast.create!(name: 'Southern Weather',
+                                      origin: 'Colombia/Ethiopia',
+                                      elevation: 1850,
+                                      fresh: true)
+            comp2.coffee_roast.create!(name: 'Geometry',
+                                      origin: 'Colombia/Ethiopia',
+                                      elevation: 2100,
+                                      fresh: true)
+            comp2.coffee_roast.create!(name: 'Monarch',
+                                      origin: 'Colombia/Ethiopia',
+                                      elevation: 1800,
+                                      fresh: false)
+            visit '/coffee_companies'
+            expect(page).to have_button("Sort By Number of Coffee Roasts")
+
+            click_on("Sort By Number of Coffee Roasts")
+            expect(current_path).to eq('/coffee_companies')
+            expect(page).to have_content("Number of Roasts: 2")
+            expect(comp2.name).to appear_before(comp1.name)
+          end
+        end
+      end
     end
   end
 end

@@ -41,6 +41,12 @@ RSpec.describe CoffeeCompany, type: :model do
         expect(CoffeeCompany.order_by_created_date.to_a).to eq([@comp1, @comp2])
       end
     end
+
+    describe "::order_by_roast_count" do
+      it 'orders companies correctly by roast_count' do
+        expect(CoffeeCompany.order_by_roast_count.to_a).to eq([@comp1, @comp2])
+      end
+    end
   end
 
   describe "instance methods" do
