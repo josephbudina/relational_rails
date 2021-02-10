@@ -1,0 +1,29 @@
+<h1>Ice Cream Parlor Flavors</h1>
+<%= link_to "Ice Cream Parlor Index", "/ice_cream_parlors" %></br>
+<%= link_to "Flavor Index", "/flavors" %></br>
+<p><%= form_with url:"/ice_cream_parlors/#{@parlors.id}/flavors", method: :get, local: true do |form| %>
+<%= form.label 'Only Return Records With Flavor Rating Higher Than Number:' %></br>
+<%= form.text_field :flavor_rating %>
+<%= form.submit 'Submit' %>
+<% end %></p>
+</br>
+<%= form_with url:"/ice_cream_parlors/#{@parlors.id}/flavors", method: :get, local: true do |form| %>
+<%= form.hidden_field :alphabetical %>
+<%= form.submit 'Sort Alphabetically' %>
+<% end %>
+</br>
+
+<% @flavors.each do |flavor| %>
+  <h3><%= link_to "#{flavor.name}", "/flavors/#{flavor.id}" %></h3>
+  <p><%= button_to 'Update', "/flavors/#{flavor.id}/edit", method: :get %></p>
+
+  <p><%= form_with url:"/ice_cream_parlors/#{@parlors.id}/flavors/#{flavor.id}", method: :delete, local: true do |form| %>
+  <%= form.hidden_field :parlor_id, value: "#{@parlors.id}" %>
+  <%= form.submit 'Delete' %>
+  <% end %></p>
+<% end %>
+
+<% if @flavors.empty? %>
+<h3> No Coffee flavors!</h3>
+<% end %>
+<h3><%= link_to "New Flavor","/ice_cream_parlors/#{@parlors.id}/flavors/new" %></h3>

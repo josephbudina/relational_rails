@@ -9,6 +9,10 @@ class Flavor < ApplicationRecord
   end
 
   def self.flavor_rating_above(threshold)
-    where("flavor_rating > #{threshold}").count
+    where("flavor_rating > #{threshold}")
+  end
+
+  def order_alphabetically
+    order(:name)
   end
 end

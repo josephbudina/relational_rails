@@ -7,10 +7,6 @@ class FlavorsController < ApplicationController
     @flavors = Flavor.find(params[:id])
   end
 
-  def ice_cream_parlor_flavors
-    @parlors = IceCreamParlor.find(params[:id])
-  end
-
   def new
     @parlors = IceCreamParlor.find(params[:id])
   end
@@ -50,7 +46,7 @@ class FlavorsController < ApplicationController
   end
 
   def destroy
-    Flavors.destroy(params[:id])
+    Flavor.destroy(params[:id])
     redirect_to "/flavors"
   end
 end
