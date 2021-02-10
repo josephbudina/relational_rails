@@ -12,7 +12,5 @@ class Flavor < ApplicationRecord
     where("flavor_rating > #{threshold}")
   end
 
-  def order_alphabetically
-    order(:name)
-  end
+  
 end

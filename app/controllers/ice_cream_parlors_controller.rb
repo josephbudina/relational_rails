@@ -39,7 +39,7 @@ class IceCreamParlorsController < ApplicationController
   end
 
   def destroy
-    IceCreamParlors.destroy(params[:id])
+    IceCreamParlor.destroy(params[:id])
     redirect_to '/ice_cream_parlors'
   end
 end

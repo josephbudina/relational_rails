@@ -1,0 +1,11 @@
+<%= link_to "Ice Cream Parlor Index", "/ice_cream_parlors" %></br>
+<%= link_to "Flavors Index", "/flavors" %></br>
+<%= form_with url: "/ice_cream_parlors/#{@parlors.id}/flavors", method: :post, local: true do |form| %>
+  <p><%= form.label :name %></br>
+  <%= form.text_field :name %></p>
+  <p><%= form.label :flavor_rating %></br>
+  <%= form.text_field :flavor_rating %></p>
+  <p><%= form.label :in_stock %>
+  <%= form.check_box :in_stock %></p>
+  <%= form.submit 'Create New Flavor' %>
+<% end %>
