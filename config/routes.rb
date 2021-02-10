@@ -31,12 +31,15 @@ Rails.application.routes.draw do
   delete 'coffee_companies/:id/coffee_roasts/:id', to: 'coffee_company_roasts#destroy'
 
   get '/flavors', to: 'flavors#index'
-  get '/ice_cream_parlors/:id/flavors', to: 'flavors#ice_cream_parlor_flavors'
+  get '/ice_cream_parlors/:id/flavors', to: 'ice_cream_parlor_flavors#index'
+  get '/ice_cream_parlors/:id/flavors/new', to: 'ice_cream_parlor_flavors#new'
+  get 'ice_cream_parlors/:id/flavors/:id/edit', to: 'ice_cream_parlor_flavors#edit'
+  patch 'ice_cream_parlors/:id/flavors/:id', to: 'ice_cream_parlor_flavors#update'
+  delete 'ice_cream_parlors/:id/flavors/:id', to: 'ice_cream_parlor_flavors#destroy'
   get 'ice_cream_parlors/:id/flavors/new', to: 'flavors#new'
   post 'ice_cream_parlors/:id/flavors', to: 'flavors#create'
   get '/flavors/:id/edit', to: 'flavors#edit'
   get '/flavors/:id', to: 'flavors#show'
   patch '/flavors/:id', to: 'flavors#update'
   delete '/flavors/:id', to: 'flavors#destroy'
-
 end

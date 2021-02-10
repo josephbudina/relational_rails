@@ -1,21 +1,16 @@
 class IceCreamParlorFlavorsController < ApplicationController
   def index
+    @parlors = IceCreamParlor.find(params[:id])
     if !params[:flavor_rating].nil?
-      flavor_rating = params[:flavor_rating]
-      parlors = IceCreamParlor.find(params[:id])
-      @flavors = parlors.flavor_rating_above(flavor_rating)
+      rating = params[:flavor_rating]
+      @flavors = @parlors.flavors.flavor_rating_above(rating)
     else
       if !params[:alphabetical].nil?
-        @flavors = IceCreamParlor.find(params[:id]).order_alphabetically
+        @flavors = @parlors.order_alphabetically
       else
-        @flavors = IceCreamParlor.find(params[:id]).flavors
+        @flavors = @parlors.flavors
       end
     end
-  end
-
-  def show
-    @parlors = IceCreamParlor.find(params[:id])
-    @flavor_count = @parlors.ice_cream_parlor.flavor_count
   end
 
   def new
@@ -34,5 +29,10 @@ class IceCreamParlorFlavorsController < ApplicationController
       in_stock: params[:flavor][:in_stock]
       })
     redirect_to "/ice_cream_parlors/#{params[:id]}/flavors"
+  end
+
+  def destroy
+    Flavor.destroy(params[:id])
+    redirect_to "/ice_cream_parlors/#{params[:flavor_id]}/flavors"
   end
 end

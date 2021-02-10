@@ -2,7 +2,7 @@
 <%= link_to "Ice Cream Parlor Index", "/ice_cream_parlors" %></br>
 <%= link_to "Flavor Index", "/flavors" %></br>
 <p><%= form_with url:"/ice_cream_parlors/#{@parlors.id}/flavors", method: :get, local: true do |form| %>
-<%= form.label 'Only Return Records With Elevation Higher Than Number:' %></br>
+<%= form.label 'Only Return Records With Flavor Rating Higher Than Number:' %></br>
 <%= form.text_field :flavor_rating %>
 <%= form.submit 'Submit' %>
 <% end %></p>

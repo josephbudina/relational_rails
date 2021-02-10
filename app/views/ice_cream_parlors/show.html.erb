@@ -6,7 +6,7 @@
 <p>Street Number: <%= @parlors.street_number%></p>
 <p>Open? <%= check_box_tag 'yes', '1', @parlors.open, :disabled => true %></p>
 
-<a href="/ice_cream_parlor/<%= @parlors.id %>/edit">Update Parlors</a>
+<a href="/ice_cream_parlors/<%= @parlors.id %>/edit">Update Parlors</a>
 <p>
 <form action="/ice_cream_parlors/<%= @parlors.id %>" method="POST">
   <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
