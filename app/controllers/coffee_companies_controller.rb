@@ -1,6 +1,11 @@
 class CoffeeCompaniesController < ApplicationController
   def index
-    @companies = CoffeeCompany.all.order_by_created_date
+    if params[:order_by_roasts].nil?
+      @companies = CoffeeCompany.all.order_by_created_date
+    else
+      @companies = CoffeeCompany.all.order_by_roast_count
+      @show_roasts = true
+    end
   end
 
   def show

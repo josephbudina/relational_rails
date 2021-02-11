@@ -33,7 +33,7 @@ comp2.coffee_roast.create!(name: 'Monarch',
                           elevation: 1800,
                           fresh: false)
 
-comp2 = CoffeeCompany.create!(name: 'Blue Sail Coffee',
+comp3 = CoffeeCompany.create!(name: 'Blue Sail Coffee',
                               address: '1028 E Front St.',
                               zipcode: 72034,
                               local: true)
