@@ -25,6 +25,7 @@ RSpec.describe 'Flavor index page', type: :feature do
 
       it "can see no Flavors if there are none" do
         Flavor.destroy_all
+        IceCreamParlor.destroy_all
         visit '/flavors'
         expect(page).to have_content('Flavors')
         expect(page).to have_content('No flavors!')
@@ -50,6 +51,8 @@ RSpec.describe 'Flavor index page', type: :feature do
       end
 
       it "I see a link to edit flavor information beside each flavor" do
+        Flavor.destroy_all
+        IceCreamParlor.destroy_all
         parlor = IceCreamParlor.create(name:"little man",
                                         street_number: 12,
                                         open: true)
@@ -67,6 +70,8 @@ RSpec.describe 'Flavor index page', type: :feature do
       end
 
       it "I see a link to delete each coffee roast" do
+        Flavor.destroy_all
+        IceCreamParlor.destroy_all
         parlor = IceCreamParlor.create(name:"scoops",
                                         street_number: 45,
                                         open: true)

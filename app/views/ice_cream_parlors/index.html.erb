@@ -5,9 +5,8 @@
   <h3><a href="/ice_cream_parlors/<%= parlor.id %>"><%= parlor.name %></a>Created At: <%= parlor.created_at %></h3>
   <a href="/ice_cream_parlors/<%= parlor.id  %>/edit">Edit</a>
   <form action="/ice_cream_parlors/<%= parlor.id %>" method="POST">
-    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-    <input type="hidden" name="_method" value="DELETE">
-    <input type="submit" value="delete"/>
-  </form>
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+  <p><%= button_to 'Delete', "/ice_cream_parlors/#{parlor.id}", method: :delete, id: "@parlors.id"%></p>
+</form>
 <% end %>
 <a href="/ice_cream_parlors/new">New Ice Cream Parlor</a>
