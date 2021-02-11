@@ -1,11 +1,11 @@
 require 'rails_helper'
 
-RSpec.describe 'The coffee company delete', type: :feature do
+RSpec.describe 'delete Flavor', type: :feature do
   describe "as a visitor" do
-    describe "when I visit /coffee_companies/:id" do
-      it "I can see a button to delete the coffee company" do
-        CoffeeRoast.destroy_all
-        CoffeeCompany.destroy_all
+    describe "when I visit /ice_cream_parlors/:id" do
+      it "I can see a button to delete flavor" do
+        Flavor.destroy_all
+        IceCreamParlor.destroy_all
         parlor = IceCreamParlor.create(name:"little man",
                                        street_number: 12,
                                        open: true)
@@ -17,12 +17,12 @@ RSpec.describe 'The coffee company delete', type: :feature do
                                           in_stock: true)
 
 
-        visit "/coffee_companies/#{company_1.id}"
-        click_button("Delete Coffee Company")
+        visit "/ice_cream_parlors/#{parlor.id}"
+        click_button("Delete")
 
-        expect(current_path).to eq ("/coffee_companies")
+        expect(current_path).to eq ("/ice_cream_parlors")
 
-        expect(page).to_not have_content('Round Mountain Coffee')
+        expect(page).to_not have_content('Ouachita')
       end
     end
   end

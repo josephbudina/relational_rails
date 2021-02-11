@@ -39,7 +39,10 @@ class IceCreamParlorsController < ApplicationController
   end
 
   def destroy
-    IceCreamParlor.destroy(params[:id])
+    parlor = IceCreamParlor.find(params[:id])
+    parlor.flavors.each do |flavor|
+      flavor.destroy
+    end
     redirect_to '/ice_cream_parlors'
   end
 end
