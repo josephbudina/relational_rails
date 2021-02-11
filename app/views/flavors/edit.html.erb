@@ -4,7 +4,7 @@
   <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
   <input type="hidden" name="_method" value="PATCH" />
   <h2>EDIT</h2>
-  <p>NAME:</p>
+  <p>Name:</p>
   <input type='text' name='flavor[name]' value="<%= @flavors.name %>"/><br/>
   <p>Flavor Rating:</p>
   <textarea name='flavor[flavor_rating]'><%= @flavors.flavor_rating %></textarea><br/>

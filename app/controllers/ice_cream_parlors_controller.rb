@@ -32,13 +32,17 @@ class IceCreamParlorsController < ApplicationController
       name: params[:ice_cream_parlor][:name],
       open: params[:ice_cream_parlor][:open],
       street_number: params[:ice_cream_parlor][:street_number]
-    })
-
+      })
     parlor.save
     redirect_to "/ice_cream_parlors/#{parlor.id}"
   end
 
   def destroy
+    parlor = IceCreamParlor.find(params[:id])
+    parlor.flavors.each do |flavor|
+      flavor.destroy
+    end
+
     IceCreamParlor.destroy(params[:id])
     redirect_to '/ice_cream_parlors'
   end

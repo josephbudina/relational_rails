@@ -33,6 +33,6 @@ class IceCreamParlorFlavorsController < ApplicationController
 
   def destroy
     Flavor.destroy(params[:id])
-    redirect_to "/ice_cream_parlors/#{params[:flavor_id]}/flavors"
+    redirect_to "/ice_cream_parlors/#{params[:parlor_id]}/flavors"
   end
 end
