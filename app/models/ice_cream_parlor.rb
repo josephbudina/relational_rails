@@ -8,4 +8,8 @@ class IceCreamParlor < ApplicationRecord
   def self.order_by_created_date
     order('created_at desc')
   end
+
+  def order_alphabetically
+    flavors.order(:name)
+  end
 end
